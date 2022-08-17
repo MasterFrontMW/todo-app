@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: normal;
+    font-weight: 300;
+    src: url("/fonts/Sans/PPNeueMontreal-Light.woff2") format("woff2"),
+    url("/fonts/Sans/PPNeueMontreal-Light.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/Sans/PPNeueMontreal-Regular.woff2") format("woff2"),
+    url("/fonts/Sans/PPNeueMontreal-Regular.woff") format("woff");
+    font-display: swap;
+}
