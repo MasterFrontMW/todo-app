@@ -1,10 +1,14 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import { setupCounter as dupa } from './counter.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
+    <div class="wrapper">
+        <div class="inner"></div>
+        <div class="inner"></div>
+    </div>
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
@@ -20,4 +24,4 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 
-setupCounter(document.querySelector('#counter'))
+dupa(document.querySelector('#counter'))
