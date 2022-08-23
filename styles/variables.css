@@ -1,0 +1,13 @@
+:root {
+  /* container */
+  --todo-page-background: #e5e5e5;
+  --todo-app-background: #f4f4f4;
+  --todo-header-logo-color: #413f3f;
+  --todo-header-logo-height: 15px;
+
+  /* shadows */
+  --todo-app-shadow: 15px 11px 53px rgba(0, 0, 0, 0.2);
+
+  /* checkbox */
+  --todo-checkbox-active: #ff4545;
+}
