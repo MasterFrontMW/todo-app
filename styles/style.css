@@ -10,7 +10,8 @@ body {
 
 .app-container {
   position: relative;
-  width: 600px;
+  width: 80vw;
+  max-width: 600px;
   min-height: 50vh;
   background: var(--todo-app-background);
   margin: 20rem auto;
