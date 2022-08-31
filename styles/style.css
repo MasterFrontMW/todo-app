@@ -2,6 +2,8 @@
 @import "./reset.css";
 @import "./variables.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@300;400;500;600&display=swap');
+
 body {
   width: 100vw;
   height: 100vh;
@@ -25,12 +27,4 @@ body {
   content: '';
   background: var(--todo-header-logo-color);
   height: var(--todo-header-logo-height);
-}
-
-.app-title {
-  display: inline-block;
-  font-size: 24px;
-  text-align: center;
-  width: 100%;
-  margin-top: calc(var(--todo-header-logo-height) + 5px);
 }

@@ -1,0 +1,21 @@
+.title {
+  background-size: 100%;
+  font-size: var(--todo-title-height);
+  font-family: "Roboto Slab", serif;
+  background: linear-gradient(45deg, #05ff67, #2965d9);
+  font-style: italic;
+  display: inline-block;
+  position: absolute;
+  top: -40px;
+  width: 100%;
+  text-align: center;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.title:hover {
+  filter: var(--title-drop-shadow);
+    cursor: default;
+}
