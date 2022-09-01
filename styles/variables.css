@@ -5,9 +5,20 @@
   --todo-header-logo-color: #413f3f;
   --todo-header-logo-height: 15px;
 
+  /* title */
+  --todo-title-height: 30px;
+
   /* shadows */
   --todo-app-shadow: 15px 11px 53px rgba(0, 0, 0, 0.2);
+  --title-drop-shadow: drop-shadow(0 0 25px rgba(1, 139, 86, 0.62));
+
+  /* gradients */
+  --green-blue-linear-gradient: linear-gradient(45deg, #05ff67, #2965d9);
+  --green-purple-linear-gradient: linear-gradient(to left, #2ebf91, #8360c3);
 
   /* checkbox */
   --todo-checkbox-active: #ff4545;
+
+  /* ToDoItem */
+  --todoItem-height: 50px;
 }

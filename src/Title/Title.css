@@ -1,0 +1,29 @@
+.title-wrapper {
+  position: absolute;
+  top: -50px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.title {
+  background-size: 100%;
+  font-size: var(--todo-title-height);
+  font-family: "Roboto Slab", serif;
+  font-style: italic;
+  display: inline-block;
+  width: 130px;
+  text-align: center;
+  background: var(--green-purple-linear-gradient);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.title:hover {
+  filter: var(--title-drop-shadow);
+  cursor: default;
+}
