@@ -1,0 +1,46 @@
+.add-to-do-item {
+  width: 100%;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.icon-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background: var(--color-light-grey);
+  border-radius: 25%;
+}
+
+.add-to-do-button {
+  background: var(--green-purple-linear-gradient);
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: auto;
+  border-radius: 12px;
+  padding: 4px 10px;
+  opacity: 0.8;
+}
+
+.add-to-do-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/*TODO: style input to meake it look appealing*/
+.add-to-do-input {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-dark-grey);
+}
+
+.add-to-do-input:focus {
+  outline: none;
+}
