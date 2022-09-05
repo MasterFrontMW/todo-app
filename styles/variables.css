@@ -1,4 +1,9 @@
 :root {
+  /* colors */
+  --color-light-grey: #e2e2e2;
+  --color-dark-grey: #413f3f;
+  --color-white: #fff;
+
   /* container */
   --todo-page-background: #e5e5e5;
   --todo-app-background: #f4f4f4;

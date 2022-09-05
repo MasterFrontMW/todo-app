@@ -1,0 +1,24 @@
+.to-do-element-wrapper {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+/*TODO: add custom styles of checkbox*/
+.to-do-element-checkbox {
+  margin-right: 10px;
+}
+
+.close-button {
+  width: 10px;
+  height: 10px;
+  margin-left: auto;
+  opacity: 0.4;
+  background: url("../assets/closeIcon.svg") center;
+}
+
+.close-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
