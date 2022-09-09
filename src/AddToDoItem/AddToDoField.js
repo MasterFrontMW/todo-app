@@ -26,7 +26,7 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
     //inject on the top of the section ToDoItem with the message from input
     addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage));
     // TODO: clear input field
-    // addToDoInput.value = "";
+    addToDoInput.value = "";
   };
 
   addToDoButton.addEventListener("click", handleAddToDoButtonClick);
