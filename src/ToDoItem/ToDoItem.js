@@ -18,7 +18,7 @@ export const ToDoItem = (message) => {
 
   // TODO: remove todo element from DOM on close click
   closeButton.addEventListener("click", () =>
-    alert("action on todo removal here")
+    toDoItemElement.remove()
   );
 
   toDoItemElement.appendChild(checkbox);
