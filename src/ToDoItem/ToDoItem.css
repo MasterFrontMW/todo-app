@@ -13,12 +13,25 @@
 .close-button {
   width: 10px;
   height: 10px;
-  margin-left: auto;
+  margin-left: 10px;
   opacity: 0.4;
   background: url("../assets/closeIcon.svg") center;
 }
 
 .close-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.edit-button {
+  width: 15px;
+  height: 15px;
+  background: url("../assets/pen-to-square-solid.svg") center;
+  margin-left: auto;
+  opacity: 0.4;
+}
+
+.edit-button:hover {
   opacity: 1;
   cursor: pointer;
 }
