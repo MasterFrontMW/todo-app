@@ -24,14 +24,32 @@
 }
 
 .edit-button {
-  width: 15px;
-  height: 15px;
-  background: url("../assets/pen-to-square-solid.svg") center;
+  width: 18px;
+  height: 18px;
   margin-left: auto;
+  background-image: url("../assets/editIcon20.svg") ;
+  background-size:100%;
+  background-repeat: no-repeat;
   opacity: 0.4;
 }
+
 
 .edit-button:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.task-message {
+  animation: introLoad 1s forwards ;
+}
+
+@keyframes introLoad {
+  from {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
 }

@@ -17,6 +17,7 @@ export const ToDoItem = (message) => {
 
   // TODO: show added message from AddToDoField inside task
   const toDoMessage = document.createElement("p");
+  toDoMessage.classList.add("task-message")
   toDoMessage.innerText = message;
   
 
