@@ -11,9 +11,12 @@ export const ToDoItem = (message) => {
 
   const checkToDoElement = () => {
     if (toDoMessage.style.textDecoration == "line-through")
-      toDoMessage.style.textDecoration = "none";
-    else toDoMessage.style.textDecoration = "line-through";
-  }
+     {toDoMessage.style.textDecoration = "none"
+      toDoMessage.style.opacity = 1}
+     else {toDoMessage.style.textDecoration = "line-through"
+          toDoMessage.style.opacity = 0.4}
+    }
+  
 
   // TODO: show added message from AddToDoField inside task
   const toDoMessage = document.createElement("p");
