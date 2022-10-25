@@ -6,32 +6,27 @@ export const ToDoItem = (message) => {
 
   // TODO: add functionality to grey text item message when checked, make text style -> line through
 
+  //checkbox label
   const checkboxLabel = document.createElement("label");
   checkboxLabel.classList.add("checkbox-label");
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.classList.add("to-do-element-checkbox");
-  const checkmark = document.createElement("div");
+  //checkbox iput (to hide)
+  const checkboxInput = document.createElement("input");
+  checkboxInput.type = "checkbox";
+  //checkbox
+  const checkbox = document.createElement("div")
+  checkbox.classList.add("checkbox");
+  // checkmart
+  const checkmark = document.createElement("object")
+  checkmark.setAttribute('data', '../../assets/checkIcon2.svg');
   checkmark.classList.add("checkmark");
 
+
   const checkToDoElement = (e) => {
-    if (e.target.checked) {
-      toDoMessage.style.textDecoration = "line-through";
-      toDoMessage.style.opacity = 0.4;
-      checkmark.classList.add("checked");
-      // checkmark.style.background = 'url("../assets/checkIcon.svg") center';
-    } else {
-      toDoMessage.style.textDecoration = "none";
-      toDoMessage.style.opacity = 1;
-      checkmark.style.background = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue("--color-light-grey");
-      checkmark.classList.remove("checked");
-    }
+    console.log("checkbox cehcked", e.target.checked)
   };
 
   // checkmark.addEventListener("click", checkToDoElement);
-  checkbox.addEventListener("click", checkToDoElement);
+  checkboxInput.addEventListener("click", checkToDoElement);
 
   // TODO: show added message from AddToDoField inside task
   const toDoMessage = document.createElement("p");
@@ -57,7 +52,13 @@ export const ToDoItem = (message) => {
   // TODO: remove todo element from DOM on close click
   closeButton.addEventListener("click", () => toDoItemElement.remove());
 
-  checkboxLabel.appendChild(checkmark);
+  /* PREPARE ELEMETNS structure checkbox label
+   1. inject checkmark with svg data inside checkbox,
+   2. inject checkbox and sibling checkboxInput into the label 
+   3. inject label with all above iniside To Do Item element 
+  */
+  checkbox.appendChild(checkmark);
+  checkboxLabel.appendChild(checkboxInput);
   checkboxLabel.appendChild(checkbox);
   toDoItemElement.appendChild(checkboxLabel);
   toDoItemElement.appendChild(toDoMessage);

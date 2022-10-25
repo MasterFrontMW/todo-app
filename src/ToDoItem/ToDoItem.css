@@ -1,60 +1,57 @@
-.to-do-element-wrapper {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-}
+ /* TODO ELEMENT STYLE */
+ .to-do-element-wrapper {
+   width: 100%;
+   height: 50px;
+   display: flex;
+   align-items: center;
+ }
 
-.checkbox-label{
-  display: flex;
-}
+ .checkbox-label {
+   display: flex;
+   margin-right: 10px;
+   z-index: 2;
+ }
 
-/*TODO: add custom styles of checkbox*/
-.to-do-element-checkbox {
-  margin-right: 10px;
-}
+ .checkbox-label:hover {
+   cursor: pointer;
+ }
 
-.close-button {
-  width: 10px;
-  height: 10px;
-  margin-left: auto;
-  opacity: 0.4;
-  background: url("../assets/closeIcon.svg") center;
-}
+ .close-button {
+   width: 10px;
+   height: 10px;
+   margin-left: auto;
+   opacity: 0.4;
+   background: url("../assets/closeIcon.svg") center;
+ }
 
-.close-button:hover {
-  opacity: 1;
-  cursor: pointer;
-}
+ .close-button:hover {
+   opacity: 1;
+   cursor: pointer;
+ }
 
+ /*  CHECKBOX STYLES */
+ input[type="checkbox"] {
+   display: none
+ }
 
-input[type="checkbox"]
-{
-  /* display: none; */
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  background: var(--color-light-grey);
-  border-radius: 20%;
-  border: 5px;
-}
+ .checkbox {
+   width: 20px;
+   height: 20px;
+   background: var(--color-light-grey);
+   border-radius: 20%;
+ }
 
-.checkmark{
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  background: var(--color-light-grey);
-  /* background: url("../assets/checkIcon.svg") center; */
-  border-radius: 20%;
-  border: 5px;
-}
+ .checkmark {
+   display: none;
+   width: 20px;
+   height: 20px;
+   pointer-events: none;
+ }
 
-.checkmark.checked {
-  background: #d91f1f
-}
+ input[type="checkbox"]:checked ~ .checkbox .checkmark {
+   display: initial;
+ }
 
-
-.checkmark:hover{
-  border: solid #d91f1f;
-  cursor: pointer;
-}
+ .checkbox:hover {
+   outline: 2px solid #d91f1f;
+ }
