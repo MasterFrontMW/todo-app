@@ -19,13 +19,9 @@ export const ToDoItem = (message) => {
       toDoMessage.style.textDecoration = "line-through";
       toDoMessage.style.opacity = 0.4;
       checkmark.classList.add("checked");
-      // checkmark.style.background = 'url("../assets/checkIcon.svg") center';
     } else {
       toDoMessage.style.textDecoration = "none";
       toDoMessage.style.opacity = 1;
-      checkmark.style.background = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue("--color-light-grey");
       checkmark.classList.remove("checked");
     }
   };
