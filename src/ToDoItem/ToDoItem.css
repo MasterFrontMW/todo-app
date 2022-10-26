@@ -44,7 +44,6 @@ input[type="checkbox"]
   margin-right: 10px;
   background: var(--color-light-grey);
   border-radius: 20%;
-  border: 5px;
 }
 
 .checked {
@@ -52,8 +51,7 @@ input[type="checkbox"]
   background-size: cover;
 }
 
-
 .checkmark:hover{
-  border: solid #d91f1f;
+  outline: 2px solid #d91f1f;
   cursor: pointer;
 }
