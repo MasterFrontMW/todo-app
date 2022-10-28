@@ -11,11 +11,11 @@ export const ToDoItem = (message) => {
 
   const checkToDoElement = (e) => {
     e.target.checked
-      ? (toDoMessage.style.textDecoration = "line-through")
-        (toDoMessage.style.opacity = 0.4)
+      ? (toDoMessage.style.textDecoration = "line-through")(
+          (toDoMessage.style.opacity = 0.4)
+        )
       : (toDoMessage.style.textDecoration = "none");
-        (toDoMessage.style.opacity = 1);
-    
+    toDoMessage.style.opacity = 1;
   };
 
   // TODO: show added message from AddToDoField inside task
