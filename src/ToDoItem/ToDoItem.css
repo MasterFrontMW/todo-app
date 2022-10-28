@@ -43,7 +43,7 @@ input[type="checkbox"]
   height: 20px;
   margin-right: 10px;
   border-radius: 20%;
-  outline: 2px solid var(--color-light-grey);
+  border: 2px solid var(--color-light-grey);
 }
 
 .checked {
@@ -53,6 +53,6 @@ input[type="checkbox"]
 }
 
 .checkmark:hover{
-  outline: 2px solid #d91f1f;
+  border: 2px solid #d91f1f;
   cursor: pointer;
 }
