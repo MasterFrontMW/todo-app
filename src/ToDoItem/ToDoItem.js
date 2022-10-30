@@ -38,13 +38,12 @@ export const ToDoItem = (message) => {
   const editButton = document.createElement("div");
   editButton.classList.add("edit-button");
 
-  // const editToDoButton = (e) => {toDoMessage.contentEditable = e.target.checked ? false : true}
-
   const editToDoButton = () => {
-    if (checkbox.checked == false) {
-      toDoMessage.contentEditable = true;
-      toDoMessage.focus();
-    } else toDoMessage.contentEditable = false;
+    if (checkbox.checked) {
+      return;
+    }
+    toDoMessage.contentEditable = true;
+    toDoMessage.focus();
   };
 
   const closeButton = document.createElement("div");
@@ -52,11 +51,13 @@ export const ToDoItem = (message) => {
 
   // TODO: remove todo element from DOM on close click
   closeButton.addEventListener("click", () => toDoItemElement.remove());
+  editButton.addEventListener("click", editToDoButton);
 
   checkboxLabel.appendChild(checkmark);
   checkboxLabel.appendChild(checkbox);
   toDoItemElement.appendChild(checkboxLabel);
   toDoItemElement.appendChild(toDoMessage);
+  toDoItemElement.appendChild(editButton);
   toDoItemElement.appendChild(closeButton);
 
   return toDoItemElement;
