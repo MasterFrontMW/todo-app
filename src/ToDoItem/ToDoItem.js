@@ -18,6 +18,7 @@ export const ToDoItem = (message) => {
     if (e.target.checked) {
       toDoMessage.style.textDecoration = "line-through";
       toDoMessage.style.opacity = 0.4;
+      toDoMessage.contentEditable = false;
       checkmark.classList.add("checked");
     } else {
       toDoMessage.style.textDecoration = "none";
