@@ -27,34 +27,35 @@
   cursor: pointer;
 }
 
-input[type="checkbox"]
-{
+input[type="checkbox"] {
   display: none;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  background: var(--color-light-grey);
-  border-radius: 20%;
-  border: 5px; 
 }
 
-.checkmark{
+input[type="checkbox"]:checked ~ .checkbox-label .checkmark {
+  background: var(--color-light-grey);
+  background-image: url("../assets/checkIcon.svg");
+  background-size: cover; 
+}
+
+input[type="checkbox"]:checked ~ .task-message {
+  text-decoration: line-through;
+  opacity : 0.4;
+}
+
+.checkmark {
   width: 20px;
   height: 20px;
-  margin-right: 10px;
   border-radius: 20%;
   border: 2px solid var(--color-light-grey);
 }
 
-.checked {
-  background: var(--color-light-grey);
-  background-image: url("../assets/checkIcon.svg");
-  background-size: cover;
-}
-
-.checkmark:hover{
+.checkmark:hover {
   border: 2px solid #d91f1f;
   cursor: pointer;}
+  
+.checkbox-label-wrapper {
+  display: flex;
+}
   
 .edit-button {
   width: 18px;
@@ -66,19 +67,19 @@ input[type="checkbox"]
   opacity: 0.4;
 }
 
-
 .edit-button:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-.task-message:focus{
+.task-message:focus {
   background: var(--color-light-grey);
 }
 
 .task-message {
   animation: introLoad 0.8s forwards ;
   padding: 0.5px 1px ;
+  margin-left: 10px;
 }
 
 @keyframes introLoad {
@@ -89,9 +90,8 @@ input[type="checkbox"]
   to {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
-
 }
 
-.to-do-element-checkbox:hover{
+.to-do-element-checkbox:hover {
   cursor: pointer;
 }
