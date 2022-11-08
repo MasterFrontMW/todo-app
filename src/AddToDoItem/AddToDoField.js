@@ -20,7 +20,6 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoInput =
     addToDoSectionHTMLElement.querySelector(".add-to-do-input");
 
-
   const handleAddToDoButtonClick = () => {
     //get value from input
     const todoTextMessage = addToDoInput.value;
