@@ -24,6 +24,11 @@
   display: flex;
 }
 
+.test-checkbox-label-wrapper {
+  position: relative;
+  display: flex;
+}
+
 input[type="checkbox"] {
   position: absolute;
   top: 0;
@@ -33,7 +38,7 @@ input[type="checkbox"] {
   opacity: 0;
 }
 
-input[type="checkbox"]:hover+.checkmark {
+input[type="checkbox"]:not(:checked):hover~.checkmark {
   border: 2px solid #d91f1f;
   cursor: pointer;
 }
@@ -55,6 +60,16 @@ input[type="checkbox"]:checked~.task-message {
   border-radius: 20%;
   border: 2px solid var(--color-light-grey);
 }
+
+.grey-border {
+  z-index: 1;
+  cursor: pointer;}
+  
+.grey-border:hover {
+  border: 2px solid #8f8d8d;
+}
+
+
 /* ------------------------- */
 .edit-button {
   width: 18px;
@@ -81,16 +96,20 @@ input[type="checkbox"]:checked~.task-message {
   margin-left: 10px;
 }
 
+.task-message:hover {
+  cursor: pointer
+}
+  
+.to-do-element-checkbox:hover {
+  cursor: pointer;
+}
+  
 @keyframes introLoad {
   from {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
-
+  
   to {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
-}
-
-.to-do-element-checkbox:hover {
-  cursor: pointer;
 }

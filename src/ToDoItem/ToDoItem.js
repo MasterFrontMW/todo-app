@@ -1,7 +1,7 @@
 import "./ToDoItem.css";
 
 export const ToDoItem = (message) => {
-  // CREATION OF ELEMENTS 
+  // CREATION OF ELEMENTS
   const toDoItemElement = document.createElement("div");
   toDoItemElement.classList.add("to-do-element-wrapper");
 
@@ -12,10 +12,10 @@ export const ToDoItem = (message) => {
   const checkmark = document.createElement("div");
   checkmark.classList.add("checkmark");
 
-  const checkboxLabelWrapper = document.createElement("div");
+  const checkboxLabelWrapper = document.createElement("label");
   checkboxLabelWrapper.classList.add("checkbox-label-wrapper");
 
-  const toDoMessage = document.createElement("label");
+  const toDoMessage = document.createElement("p");
   toDoMessage.classList.add("task-message");
   toDoMessage.innerText = message;
 
@@ -25,24 +25,48 @@ export const ToDoItem = (message) => {
   const closeButton = document.createElement("div");
   closeButton.classList.add("close-button");
 
+  const checkboxClick = (e) => {
+    if (checkbox.checked) {
+      toDoMessage.removeEventListener("click", editClick);
+      e.preventDefault();
+    }
+  };
+
+  const editClick = (e) => {
+    if (checkbox.checked == false) {
+      console.log("editClick was clicked");
+      e.preventDefault();
+    }
+  };
+
   // METHODS
+
   const editToDoButton = () => {
     if (checkbox.checked) {
-      return;
+    } else {
+      toDoMessage.contentEditable = true;
+      toDoMessage.focus();
+      toDoMessage.addEventListener("click", editClick);
+      toDoMessage.style.cursor = "default";
     }
-    toDoMessage.contentEditable = true;
-    toDoMessage.focus();
   };
 
   const checkToDoElement = () => {
     if (checkbox.checked) {
       toDoMessage.contentEditable = false;
+      toDoMessage.style.cursor = "default";
+      toDoMessage.removeEventListener("click", editClick);
+      checkmark.classList.add("grey-border");
+    } else {
+      toDoMessage.style.cursor = "pointer";
+      checkmark.classList.remove("grey-border");
     }
   };
 
   // ASSINGNIG EVENT LISTENERS AND PASSING METHODS FROM UPPER DEFINITION
-  checkbox.addEventListener("click", checkToDoElement);
   editButton.addEventListener("click", editToDoButton);
+  checkbox.addEventListener("click", checkToDoElement);
+  toDoMessage.addEventListener("click", checkboxClick);
   closeButton.addEventListener("click", () => toDoItemElement.remove());
 
   // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
