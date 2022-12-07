@@ -1,49 +1,78 @@
 import "./ToDoItem.css";
 
 export const ToDoItem = (message) => {
+  // CREATION OF ELEMENTS
   const toDoItemElement = document.createElement("div");
   toDoItemElement.classList.add("to-do-element-wrapper");
 
-  // TODO: add functionality to grey text item message when checked, make text style -> line through
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.classList.add("to-do-element-checkbox");
 
-  const checkToDoElement = (e) => {
-    e.target.checked
-      ? (toDoMessage.style.textDecoration = "line-through")(
-          (toDoMessage.style.opacity = 0.4)
-        )
-      : (toDoMessage.style.textDecoration = "none");
-    toDoMessage.style.opacity = 1;
-  };
+  const checkmark = document.createElement("div");
+  checkmark.classList.add("checkmark");
 
-  // TODO: show added message from AddToDoField inside task
+  const checkboxLabelWrapper = document.createElement("label");
+  checkboxLabelWrapper.classList.add("checkbox-label-wrapper");
+
   const toDoMessage = document.createElement("p");
   toDoMessage.classList.add("task-message");
   toDoMessage.innerText = message;
 
-  //TODO: add button to edit TodoElement
   const editButton = document.createElement("div");
   editButton.classList.add("edit-button");
-
-  const editToDoButton = () => {
-    if (checkbox.checked) {
-      return;
-    }
-    toDoMessage.contentEditable = true;
-    toDoMessage.focus();
-  };
 
   const closeButton = document.createElement("div");
   closeButton.classList.add("close-button");
 
-  // TODO: remove todo element from DOM on close click
-  closeButton.addEventListener("click", () => toDoItemElement.remove());
+  const checkboxClick = (e) => {
+    if (checkbox.checked) {
+      toDoMessage.removeEventListener("click", editClick);
+      e.preventDefault();
+    }
+  };
+
+  const editClick = (e) => {
+    if (checkbox.checked == false) {
+      console.log("editClick was clicked");
+      e.preventDefault();
+    }
+  };
+
+  // METHODS
+  const editToDoButton = () => {
+    if (checkbox.checked) {
+    } else {
+      toDoMessage.contentEditable = true;
+      toDoMessage.focus();
+      toDoMessage.addEventListener("click", editClick);
+      toDoMessage.style.cursor = "default";
+    }
+  };
+
+  const checkToDoElement = () => {
+    if (checkbox.checked) {
+      toDoMessage.contentEditable = false;
+      toDoMessage.style.cursor = "default";
+      toDoMessage.removeEventListener("click", editClick);
+      checkmark.classList.add("grey-border");
+    } else {
+      toDoMessage.style.cursor = "pointer";
+      checkmark.classList.remove("grey-border");
+    }
+  };
+
+  // ASSINGNIG EVENT LISTENERS AND PASSING METHODS FROM UPPER DEFINITION
   editButton.addEventListener("click", editToDoButton);
   checkbox.addEventListener("click", checkToDoElement);
-  toDoItemElement.appendChild(checkbox);
-  toDoItemElement.appendChild(toDoMessage);
+  toDoMessage.addEventListener("click", checkboxClick);
+  closeButton.addEventListener("click", () => toDoItemElement.remove());
+
+  // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
+  checkboxLabelWrapper.appendChild(checkbox);
+  checkboxLabelWrapper.appendChild(checkmark);
+  checkboxLabelWrapper.appendChild(toDoMessage);
+  toDoItemElement.appendChild(checkboxLabelWrapper);
   toDoItemElement.appendChild(editButton);
   toDoItemElement.appendChild(closeButton);
 

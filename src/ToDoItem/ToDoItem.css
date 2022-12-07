@@ -5,11 +5,6 @@
   align-items: center;
 }
 
-/*TODO: add custom styles of checkbox*/
-.to-do-element-checkbox {
-  margin-right: 10px;
-}
-
 .close-button {
   width: 10px;
   height: 10px;
@@ -23,42 +18,96 @@
   cursor: pointer;
 }
 
+/* CHECKBOX AND LABEL */
+.checkbox-label-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.test-checkbox-label-wrapper {
+  position: relative;
+  display: flex;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+}
+
+input[type="checkbox"]:not(:checked):hover~.checkmark {
+  border: 2px solid #d91f1f;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked+.checkmark {
+  background: var(--color-light-grey);
+  background-image: url("../assets/checkIcon.svg");
+  background-size: cover;
+}
+
+input[type="checkbox"]:checked~.task-message {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 20%;
+  border: 2px solid var(--color-light-grey);
+}
+
+.grey-border {
+  z-index: 1;
+  cursor: pointer;}
+  
+.grey-border:hover {
+  border: 2px solid #8f8d8d;
+}
+
+/* ------------------------- */
 .edit-button {
   width: 18px;
   height: 18px;
   margin-left: auto;
-  background-image: url("../assets/editIcon.svg") ;
-  background-size:100%;
+  background-image: url("../assets/editIcon.svg");
+  background-size: 100%;
   background-repeat: no-repeat;
   opacity: 0.4;
 }
-
 
 .edit-button:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-.task-message:focus{
+.task-message:focus {
   background: var(--color-light-grey);
 }
 
 .task-message {
-  animation: introLoad 0.8s forwards ;
-  padding: 0.5px 1px ;
+  animation: introLoad 0.8s forwards;
+  padding: 0.5px 1px;
+  margin-left: 10px;
 }
 
+.task-message:hover {
+  cursor: pointer
+}
+  
+.to-do-element-checkbox:hover {
+  cursor: pointer;
+}
+  
 @keyframes introLoad {
   from {
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
-
   to {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
-
-}
-
-.to-do-element-checkbox:hover{
-  cursor: pointer;
 }
