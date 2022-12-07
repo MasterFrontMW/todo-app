@@ -40,7 +40,6 @@ export const ToDoItem = (message) => {
   };
 
   // METHODS
-
   const editToDoButton = () => {
     if (checkbox.checked) {
     } else {

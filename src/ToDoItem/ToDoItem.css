@@ -69,7 +69,6 @@ input[type="checkbox"]:checked~.task-message {
   border: 2px solid #8f8d8d;
 }
 
-
 /* ------------------------- */
 .edit-button {
   width: 18px;
@@ -108,7 +107,6 @@ input[type="checkbox"]:checked~.task-message {
   from {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
-  
   to {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
