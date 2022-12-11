@@ -23,11 +23,15 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const handleAddToDoButtonClick = () => {
     //get value from input
     const todoTextMessage = addToDoInput.value;
-    //inject on the top of the section ToDoItem with the message from input
-    addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage));
-    // TODO: clear input field
+
+    if (!addToDoInput.value.trim()) {
+      alert("Please insert the task");
+      return;
+    } else {
+      //inject on the top of the section ToDoItem with the message from input
+      addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage));
+    }
     addToDoInput.value = "";
   };
-
   addToDoButton.addEventListener("click", handleAddToDoButtonClick);
 };
