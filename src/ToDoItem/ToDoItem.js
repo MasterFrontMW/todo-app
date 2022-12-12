@@ -34,7 +34,6 @@ export const ToDoItem = (message) => {
 
   const editClick = (e) => {
     if (checkbox.checked == false) {
-      console.log("editClick was clicked");
       e.preventDefault();
     }
   };
