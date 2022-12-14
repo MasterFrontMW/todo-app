@@ -27,13 +27,10 @@ export const ToDoItem = (message) => {
 
   const checkboxClick = (e) => {
     if (checkbox.checked) {
-      toDoMessage.removeEventListener("click", editClick);
       e.preventDefault();
-    }
-  };
-
-  const editClick = (e) => {
-    if (checkbox.checked == false) {
+    } else {
+      toDoMessage.contentEditable = true;
+      toDoMessage.focus();
       e.preventDefault();
     }
   };
@@ -44,7 +41,6 @@ export const ToDoItem = (message) => {
     } else {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
-      toDoMessage.addEventListener("click", editClick);
       toDoMessage.style.cursor = "default";
     }
   };
@@ -53,7 +49,6 @@ export const ToDoItem = (message) => {
     if (checkbox.checked) {
       toDoMessage.contentEditable = false;
       toDoMessage.style.cursor = "default";
-      toDoMessage.removeEventListener("click", editClick);
       checkmark.classList.add("grey-border");
     } else {
       toDoMessage.style.cursor = "pointer";
