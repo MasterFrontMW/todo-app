@@ -21,10 +21,12 @@ export const ToDoItem = (message) => {
 
   const editButton = document.createElement("div");
   editButton.classList.add("edit-button");
-
+  
   const closeButton = document.createElement("div");
   closeButton.classList.add("close-button");
-
+  
+  // METHODS
+  
   const checkboxClick = (e) => {
     if (checkbox.checked) {
       e.preventDefault();
@@ -32,16 +34,18 @@ export const ToDoItem = (message) => {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
       e.preventDefault();
+      toDoMessage.style.cursor = "default";
+      // editButton.style.opacity = 0.9;
     }
   };
-
-  // METHODS
+  
   const editToDoButton = () => {
     if (checkbox.checked) {
     } else {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
       toDoMessage.style.cursor = "default";
+      editButton.style.opacity = 0.9;
     }
   };
 
@@ -55,13 +59,13 @@ export const ToDoItem = (message) => {
       checkmark.classList.remove("grey-border");
     }
   };
-
+  
   // ASSINGNIG EVENT LISTENERS AND PASSING METHODS FROM UPPER DEFINITION
   editButton.addEventListener("click", editToDoButton);
   checkbox.addEventListener("click", checkToDoElement);
   toDoMessage.addEventListener("click", checkboxClick);
   closeButton.addEventListener("click", () => toDoItemElement.remove());
-
+  
   // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
   checkboxLabelWrapper.appendChild(checkbox);
   checkboxLabelWrapper.appendChild(checkmark);
@@ -69,6 +73,6 @@ export const ToDoItem = (message) => {
   toDoItemElement.appendChild(checkboxLabelWrapper);
   toDoItemElement.appendChild(editButton);
   toDoItemElement.appendChild(closeButton);
-
+  
   return toDoItemElement;
 };
