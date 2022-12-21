@@ -26,22 +26,21 @@ export const ToDoItem = (message) => {
   closeButton.classList.add("close-button");
 
   // METHODS
-  
+
   const checkboxClick = (e) => {
     if (checkbox.checked) {
       e.preventDefault();
-    } else {
-      toDoMessage.contentEditable = true;
-      editButton.removeEventListener("mouseout", editButtonHoverOff);
-      toDoMessage.focus();
-      e.preventDefault();
-      editButton.style.opacity = 1;
+      return;
     }
+    toDoMessage.contentEditable = true;
+    editButton.removeEventListener("mouseout", editButtonHoverOff);
+    toDoMessage.focus();
+    e.preventDefault();
+    editButton.style.opacity = 1;
   };
 
   const editToDoButton = () => {
-    if (checkbox.checked) {
-    } else {
+    if (!checkbox.checked) {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
       editButton.style.opacity = 1;
@@ -53,9 +52,9 @@ export const ToDoItem = (message) => {
     if (checkbox.checked) {
       toDoMessage.contentEditable = false;
       checkmark.classList.add("grey-border");
-    } else {
-      checkmark.classList.remove("grey-border");
+      return;
     }
+    checkmark.classList.remove("grey-border");
   };
 
   const editButtonHoverOn = () => {
