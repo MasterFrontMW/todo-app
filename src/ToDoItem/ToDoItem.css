@@ -96,7 +96,7 @@ input[type="checkbox"]:checked~.task-message {
 }
 
 .task-message:hover {
-  cursor: pointer
+  cursor: text
 }
   
 .to-do-element-checkbox:hover {

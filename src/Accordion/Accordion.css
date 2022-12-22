@@ -8,6 +8,8 @@
   border-radius: 4px;
   margin: 5px 0;
   padding: 2px 4px;
+  height: 30px;
+  overflow: hidden;
 }
 
 .accordion-title {
@@ -30,7 +32,6 @@
 .accordion-content{
   display: flex;
   font-size: 12px;
-  max-height: 0;
   overflow: hidden;
   justify-content: center;
   transition: max-height 1s ease-out;
