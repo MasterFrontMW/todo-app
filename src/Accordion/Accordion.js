@@ -22,42 +22,29 @@ export const accordionCollapse = (accordionHTMLSection) => {
   const accordionTitles =
     accordionHTMLSection.querySelectorAll(".accordion-title");
 
-  accordionTitles.forEach((accordionTitle) => {
+    accordionTitles.forEach((accordionTitle) => {
     const accordionItemContent = accordionTitle.nextElementSibling;
     
-    const accordionItemContentRect = accordionItemContent.getBoundingClientRect();
-    const maxHeight = accordionItemContentRect.height;
-    console.log("this is height from RECT  " + maxHeight);
     
     const handleAccordionCollapse = () => {
-  
-      // const accordionItemContentScroll = accordionItemContent.scrollHeight;
-      // console.log("this is height from SCROLL  " +  accordionItemContentScroll);
 
-      console.log(accordionItemContent);
-      console.log(accordionItemContent.style.maxHeight);
       
-      
-      const accordionItemContentRect = accordionItemContent.getBoundingClientRect();
-      const maxHeight = accordionItemContentRect.height;
-      console.log("this is height from RECT  " + maxHeight);
+      const accordionContentRectHeight = accordionItemContent.getBoundingClientRect().height;
+      console.log("this is height from RECT  " + accordionContentRectHeight);
       
       accordionTitle.classList.toggle("active");
       if (accordionTitle.classList.contains("active")) {
         
-        const accordionItemContentRect = accordionItemContent.getBoundingClientRect();
-        const maxHeight = accordionItemContentRect.height;
-        console.log("this is height from RECT  " + maxHeight);
+        // console.log(accordionItemContent.style.maxHeight);
+        // console.log("this is height from RECT  " + accordionContentRectHeight);
         
-        // console.log(accordionItemContent.style.maxHeight + " this is max HEIGHT before");
         
-        // const accordionItemContentScroll = accordionItemContent.scrollHeight;
-        // accordionItemContent.style.maxHeight = accordionItemContentScroll +"px";
+        const accordionItemContentScroll = accordionItemContent.scrollHeight;
+        accordionItemContent.style.maxHeight = accordionItemContentScroll +"px";
         
-        // console.log(accordionItemContent.style.maxHeight + " this is max HEIGHT after");
       }
       else {
-        // accordionItemContent.style.maxHeight = 0;  
+        accordionItemContent.style.maxHeight = 0;  
       }
     };
 

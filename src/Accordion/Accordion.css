@@ -33,7 +33,7 @@
   max-height: 0;
   overflow: hidden;
   justify-content: center;
-  transition: max-height 1s ease-out;
+  transition: max-height 0.5s ease-out;
 }
 
 .accordion-title.active + .accordion-content{
