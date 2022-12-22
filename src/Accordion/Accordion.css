@@ -20,22 +20,24 @@
 }
 
 .accordion-title::after{
-  content: "\2212";
-}
-
-.accordion-title.active::after{
   content: "\002B";
 }
 
-.accordion-title.active + .accordion-content{
-  max-height: 0px;
-  overflow: hidden;
+.accordion-title.active::after{
+  content: "\2212";
 }
 
 .accordion-content{
   display: flex;
   font-size: 12px;
+  max-height: 0;
+  overflow: hidden;
   justify-content: center;
+  transition: max-height 1s ease-out;
+}
+
+.accordion-title.active + .accordion-content{
+  max-height: 30px;
 }
 
 .accordion-title:hover{
