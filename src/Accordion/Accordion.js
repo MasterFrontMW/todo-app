@@ -22,29 +22,18 @@ export const accordionCollapse = (accordionHTMLSection) => {
   const accordionTitles =
     accordionHTMLSection.querySelectorAll(".accordion-title");
 
-    accordionTitles.forEach((accordionTitle) => {
+  accordionTitles.forEach((accordionTitle) => {
     const accordionItemContent = accordionTitle.nextElementSibling;
-    
-    
+
     const handleAccordionCollapse = () => {
 
-      
-      const accordionContentRectHeight = accordionItemContent.getBoundingClientRect().height;
-      console.log("this is height from RECT  " + accordionContentRectHeight);
-      
       accordionTitle.classList.toggle("active");
       if (accordionTitle.classList.contains("active")) {
-        
-        // console.log(accordionItemContent.style.maxHeight);
-        // console.log("this is height from RECT  " + accordionContentRectHeight);
-        
-        
         const accordionItemContentScroll = accordionItemContent.scrollHeight;
-        accordionItemContent.style.maxHeight = accordionItemContentScroll +"px";
-        
-      }
-      else {
-        accordionItemContent.style.maxHeight = 0;  
+        accordionItemContent.style.maxHeight =
+          accordionItemContentScroll + "px";
+      } else {
+        accordionItemContent.style.maxHeight = 0;
       }
     };
 
