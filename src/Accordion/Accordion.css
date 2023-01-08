@@ -16,15 +16,36 @@
   background-size: 100%;
   font-size: 14px;
   font-family: "Roboto Slab", serif;
-  text-align: center;
+  align-items: center;
 }
 
-.accordion-title::after{
-  content: "\002B";
+.accordion-plus-sign{
+  transition: 0.5s ;
+  content: "";
+  margin-right: 5px;
+  background-color: black;
+  width: 1.5px;
+  height: 12px;
 }
 
-.accordion-title.active::after{
-  content: "\2212";
+.accordion-plus-sign::after{
+  position: absolute;
+  transition: 0.5s ;
+  transform: rotate(90deg);
+  content: "";
+  background-color: black;
+  width: 1.5px;
+  height: 12px;
+}
+
+.accordion-plus-sign.active{
+  transform: rotate(270deg);
+  transition: 1s ;
+}
+
+.accordion-plus-sign.active::after{
+  transform: rotate(0deg);
+  transition: 0.3s ;
 }
 
 .accordion-content{
