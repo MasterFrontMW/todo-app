@@ -1,6 +1,6 @@
 .accordion-wrapper {
-  width: 100%;
   justify-content: center;
+  width: 100%;
 }
 
 .accordion-item {
@@ -12,30 +12,30 @@
 
 .accordion-title {
   display: flex;
-  justify-content: space-between;
   background-size: 100%;
+  justify-content: space-between;
+  align-items: center;
   font-size: 14px;
   font-family: "Roboto Slab", serif;
-  align-items: center;
 }
 
 .accordion-plus-sign{
-  transition: 0.5s ;
   content: "";
-  margin-right: 5px;
   background-color: black;
   width: 1.5px;
   height: 12px;
+  margin-right: 5px;
+  transition: 0.5s ;
 }
 
 .accordion-plus-sign::after{
-  position: absolute;
-  transition: 0.5s ;
-  transform: rotate(90deg);
   content: "";
+  position: absolute;
   background-color: black;
   width: 1.5px;
   height: 12px;
+  transform: rotate(90deg);
+  transition: 0.5s ;
 }
 
 .accordion-plus-sign.active{
@@ -50,10 +50,10 @@
 
 .accordion-content{
   display: flex;
-  font-size: 12px;
-  max-height: 0;
   overflow: hidden;
   justify-content: center;
+  max-height: 0;
+  font-size: 12px;
   transition: max-height 0.5s ease-out;
 }
 
