@@ -38,8 +38,8 @@ input[type="checkbox"] {
   opacity: 0;
 }
 
-input[type="checkbox"]:not(:checked):hover~.checkmark {
-  border: 2px solid #d91f1f;
+.checkmark:hover {
+  border: 2px solid #d51e1e;
   cursor: pointer;
 }
 
@@ -54,11 +54,16 @@ input[type="checkbox"]:checked~.task-message {
   opacity: 0.4;
 }
 
+input[type="checkbox"]:checked:hover~.task-message {
+  cursor: pointer;
+}
+
 .checkmark {
   width: 20px;
   height: 20px;
   border-radius: 20%;
   border: 2px solid var(--color-light-grey);
+  z-index: 1;
 }
 
 .grey-border {
@@ -96,7 +101,7 @@ input[type="checkbox"]:checked~.task-message {
 }
 
 .task-message:hover {
-  cursor: pointer
+  cursor: text;
 }
   
 .to-do-element-checkbox:hover {

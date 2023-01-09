@@ -25,39 +25,52 @@ export const ToDoItem = (message) => {
   const closeButton = document.createElement("div");
   closeButton.classList.add("close-button");
 
+  // METHODS
+
   const checkboxClick = (e) => {
     if (checkbox.checked) {
-      toDoMessage.removeEventListener("click", editClick);
       e.preventDefault();
+      return;
     }
+    toDoMessage.contentEditable = true;
+    editButton.removeEventListener("mouseout", editButtonHoverOff);
+    toDoMessage.focus();
+    e.preventDefault();
+    editButton.style.opacity = 1;
   };
 
-  const editClick = (e) => {
-    if (checkbox.checked == false) {
-      e.preventDefault();
-    }
-  };
-
-  // METHODS
   const editToDoButton = () => {
-    if (checkbox.checked) {
-    } else {
+    if (!checkbox.checked) {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
-      toDoMessage.addEventListener("click", editClick);
-      toDoMessage.style.cursor = "default";
+      editButton.style.opacity = 1;
+      editButton.removeEventListener("mouseout", editButtonHoverOff);
     }
   };
 
   const checkToDoElement = () => {
     if (checkbox.checked) {
       toDoMessage.contentEditable = false;
-      toDoMessage.style.cursor = "default";
-      toDoMessage.removeEventListener("click", editClick);
       checkmark.classList.add("grey-border");
-    } else {
-      toDoMessage.style.cursor = "pointer";
-      checkmark.classList.remove("grey-border");
+      return;
+    }
+    checkmark.classList.remove("grey-border");
+  };
+
+  const editButtonHoverOn = () => {
+    editButton.style.opacity = 1;
+  };
+
+  const editButtonHoverOff = () => {
+    editButton.style.opacity = 0.4;
+  };
+
+  const clickOutsideTask = (e) => {
+    if (e.target !== toDoMessage && e.target !== editButton) {
+      toDoMessage.contentEditable = false;
+      editButton.style.opacity = 0.4;
+      editButton.addEventListener("mouseover", editButtonHoverOn);
+      editButton.addEventListener("mouseout", editButtonHoverOff);
     }
   };
 
@@ -66,6 +79,7 @@ export const ToDoItem = (message) => {
   checkbox.addEventListener("click", checkToDoElement);
   toDoMessage.addEventListener("click", checkboxClick);
   closeButton.addEventListener("click", () => toDoItemElement.remove());
+  document.body.addEventListener("click", clickOutsideTask);
 
   // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
   checkboxLabelWrapper.appendChild(checkbox);
