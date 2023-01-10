@@ -1,0 +1,24 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "jsxSingleQuote": false,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "semi": true,
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["**/*.css"],
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
+}
