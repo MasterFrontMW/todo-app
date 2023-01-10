@@ -1,0 +1,21 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "font-family-name-quotes": "always-where-required",
+    "alpha-value-notation": "number",
+    "comment-empty-line-before": [
+      "always",
+      { "except": ["first-nested"], "ignore": ["after-comment", "stylelint-commands"] }
+    ],
+    "color-function-notation": "modern",
+    "custom-property-pattern": "[a-z0-9]+([A-Z]{1}[a-z]+)*((-){1}[a-z0-9]+)+",
+    "indentation": 2,
+    "selector-class-pattern": "^(.)[a-z]+((\\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
+  }
+}
