@@ -1,4 +1,4 @@
-import "./Accordion.css";
+import './Accordion.css';
 
 export const Accordion = () => {
   return `<div class="accordion-wrapper">
@@ -19,8 +19,7 @@ export const Accordion = () => {
 };
 
 export const initializeAccordion = (accordionHTMLSection) => {
-  const accordionTitles =
-    accordionHTMLSection.querySelectorAll(".accordion-title");
+  const accordionTitles = accordionHTMLSection.querySelectorAll('.accordion-title');
 
   accordionTitles.forEach((accordionTitle) => {
     const accordionItemContent = accordionTitle.nextElementSibling;
@@ -28,17 +27,16 @@ export const initializeAccordion = (accordionHTMLSection) => {
     const accordionPlusSign = accordionTitle.lastElementChild;
 
     const handleAccordionCollapse = () => {
-      accordionPlusSign.classList.toggle("active");
-      accordionTitle.classList.toggle("active");
-      if (accordionTitle.classList.contains("active")) {
+      accordionPlusSign.classList.toggle('active');
+      accordionTitle.classList.toggle('active');
+      if (accordionTitle.classList.contains('active')) {
         const accordionItemContentScroll = accordionItemContent.scrollHeight;
-        accordionItemContent.style.maxHeight =
-          accordionItemContentScroll + "px";
+        accordionItemContent.style.maxHeight = `${accordionItemContentScroll}px`;
       } else {
         accordionItemContent.style.maxHeight = 0;
       }
     };
 
-    accordionTitle.addEventListener("click", handleAccordionCollapse);
+    accordionTitle.addEventListener('click', handleAccordionCollapse);
   });
 };

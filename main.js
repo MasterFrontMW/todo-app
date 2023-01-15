@@ -1,19 +1,16 @@
 // HERE WE WILL WRITE SOME ENDING JS SCRIPTS TO MANIPULATE PAGE
 
-import { Title } from "./src/Title/Title.js";
+import Title from './src/Title/Title';
 
-import { Accordion, initializeAccordion } from "./src/Accordion/Accordion";
+import { Accordion, initializeAccordion } from './src/Accordion/Accordion';
 
-import {
-  AddToDoField,
-  initializeAddToDoField,
-} from "./src/AddToDoItem/AddToDoField.js";
+import { AddToDoField, initializeAddToDoField } from './src/AddToDoItem/AddToDoField';
 
-//selectors
+// selectors
 
-const pageTitle = document.querySelector("#title");
-const accordion = document.querySelector("#accordion");
-const addToDoSection1 = document.querySelector("#todo-section");
+const pageTitle = document.querySelector('#title');
+const accordion = document.querySelector('#accordion');
+const addToDoSection1 = document.querySelector('#todo-section');
 
 const initializeApp = () => {
   pageTitle.innerHTML = Title();

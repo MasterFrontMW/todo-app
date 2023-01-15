@@ -17,5 +17,6 @@
         "ignorePseudoClasses": ["global"]
       }
     ]
-  }
+  },
+  "ignoreFiles": ["**/*.js"]
 }

@@ -38,26 +38,6 @@ input[type="checkbox"] {
   opacity: 0;
 }
 
-.checkmark:hover {
-  border: 2px solid #d51e1e;
-  cursor: pointer;
-}
-
-input[type="checkbox"]:checked+.checkmark {
-  background: var(--color-light-grey);
-  background-image: url("../assets/checkIcon.svg");
-  background-size: cover;
-}
-
-input[type="checkbox"]:checked~.task-message {
-  text-decoration: line-through;
-  opacity: 0.4;
-}
-
-input[type="checkbox"]:checked:hover~.task-message {
-  cursor: pointer;
-}
-
 .checkmark {
   width: 20px;
   height: 20px;
@@ -66,10 +46,22 @@ input[type="checkbox"]:checked:hover~.task-message {
   z-index: 1;
 }
 
+.checkmark:hover {
+  cursor: pointer;
+  border: 2px solid #d51e1e;
+}
+
+input[type="checkbox"]:checked + .checkmark {
+  background: var(--color-light-grey);
+  background-image: url("../assets/checkIcon.svg");
+  background-size: cover;
+}
+
 .grey-border {
   z-index: 1;
-  cursor: pointer;}
-  
+  cursor: pointer;
+}
+
 .grey-border:hover {
   border: 2px solid #8f8d8d;
 }
@@ -90,28 +82,38 @@ input[type="checkbox"]:checked:hover~.task-message {
   cursor: pointer;
 }
 
-.task-message:focus {
-  background: var(--color-light-grey);
-}
-
 .task-message {
   animation: introLoad 0.8s forwards;
   padding: 0.5px 1px;
   margin-left: 10px;
 }
 
+.task-message:focus {
+  background: var(--color-light-grey);
+}
+
 .task-message:hover {
   cursor: text;
 }
-  
+
+input[type="checkbox"]:checked ~ .task-message {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+input[type="checkbox"]:checked:hover ~ .task-message {
+  cursor: pointer;
+}
+
 .to-do-element-checkbox:hover {
   cursor: pointer;
 }
-  
-@keyframes introLoad {
+
+@keyframes introload {
   from {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
+
   to {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
