@@ -22,6 +22,8 @@
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 
+  /* stylelint-enable property-no-vendor-prefix */
+
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
