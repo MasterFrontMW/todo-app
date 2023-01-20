@@ -7,18 +7,18 @@
 }
 
 .title {
-  background-size: 100%;
-  font-size: var(--todo-title-height);
-  font-family: "Roboto Slab", serif;
-  font-style: italic;
   display: inline-block;
   width: 130px;
-  text-align: center;
   background: var(--green-purple-linear-gradient);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+  background-size: 100%;
+  font-size: var(--todo-title-height);
+  font-family: "Roboto Slab", serif;
+  font-style: italic;
+  text-align: center;
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

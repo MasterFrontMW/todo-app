@@ -19,36 +19,36 @@
   font-family: "Roboto Slab", serif;
 }
 
-.accordion-plus-sign{
+.accordion-plus-sign {
   content: "";
   background-color: black;
   width: 1.5px;
   height: 12px;
   margin-right: 5px;
-  transition: 0.5s ;
+  transition: 0.5s;
 }
 
-.accordion-plus-sign::after{
+.accordion-plus-sign::after {
   content: "";
   position: absolute;
   background-color: black;
   width: 1.5px;
   height: 12px;
   transform: rotate(90deg);
-  transition: 0.5s ;
+  transition: 0.5s;
 }
 
-.accordion-plus-sign.active{
+.accordion-plus-sign.active {
   transform: rotate(270deg);
-  transition: 1s ;
+  transition: 1s;
 }
 
-.accordion-plus-sign.active::after{
+.accordion-plus-sign.active::after {
   transform: rotate(0deg);
-  transition: 0.3s ;
+  transition: 0.3s;
 }
 
-.accordion-content{
+.accordion-content {
   display: flex;
   overflow: hidden;
   justify-content: center;
@@ -57,12 +57,10 @@
   transition: max-height 0.5s ease-out;
 }
 
-.accordion-title.active + .accordion-content{
+.accordion-title.active + .accordion-content {
   max-height: 30px;
 }
 
-.accordion-title:hover{
+.accordion-title:hover {
   cursor: pointer;
 }
-
-

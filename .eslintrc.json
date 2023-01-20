@@ -11,6 +11,8 @@
   },
   "plugins": ["prettier"],
   "rules": {
+    "no-multi-assign": "off",
+    "import/prefer-default-export": "off",
     "sort-keys": [
       "error",
       "asc",
