@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint .",
+    "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix",
-    "stylelint": "stylelint \"**/*.css\"",
+    "stylelint": "stylelint src/**/*.css",
     "prepare": "husky install",
     "prettier": "npx prettier --write --ignore-unknown",
     "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}'",
@@ -38,5 +38,8 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.css": "stylelint --fix"
+  },
+  "dependencies": {
+    "firebase": "^9.16.0"
   }
 }
