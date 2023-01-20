@@ -1,6 +1,6 @@
 import './AddToDoField.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
-import { addTaskToStorage, getTasksDataFromLocalStorage } from '../helpers/storage';
+import { addTaskToStorage } from '../helpers/storage';
 
 export const AddToDoField = () => {
   const addToDoField = document.createElement('div');
@@ -23,7 +23,6 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
 
   const handleAddToDoButtonClick = () => {
-    console.log(getTasksDataFromLocalStorage());
     // get value from input
     const todoTextMessage = addToDoInput.value;
     // inject on the top of the section ToDoItem with the message from input

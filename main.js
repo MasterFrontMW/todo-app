@@ -10,9 +10,8 @@ import { ToDoItem } from './src/ToDoItem/ToDoItem';
 const pageTitle = document.querySelector('#title');
 const addToDoSection = document.querySelector('#todo-section');
 
-// load data from local storage and render
+// load data from local storage and render tasks
 const dataOnLoad = getTasksDataFromLocalStorage();
-console.log(dataOnLoad);
 const renderTasks = () => {
   dataOnLoad.forEach((task, index) => {
     addToDoSection.prepend(ToDoItem(task, index));
