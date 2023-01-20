@@ -1,5 +1,5 @@
 // HERE WE WILL WRITE SOME ENDING JS SCRIPTS TO MANIPULATE PAGE
-
+import './src/utils/firebase';
 import { Title } from './src/Title/Title';
 
 import { Accordion, initializeAccordion } from './src/Accordion/Accordion';
