@@ -9,8 +9,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["prettier"],
+  // "plugins": ["prettier"],
   "rules": {
+    "no-multi-assign": "off",
+    "import/prefer-default-export": "off",
     "sort-keys": [
       "error",
       "asc",

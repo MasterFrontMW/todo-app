@@ -11,7 +11,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: var(--todo-page-background);
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .app-container {

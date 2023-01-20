@@ -1,8 +1,11 @@
-import "./AddToDoField.css";
-import { ToDoItem } from "../ToDoItem/ToDoItem.js";
+import './AddToDoField.css';
+import { ToDoItem } from '../ToDoItem/ToDoItem';
+import { addTaskToStorage, getTasksDataFromLocalStorage } from '../helpers/storage';
 
 export const AddToDoField = () => {
-  return `<div class="add-to-do-item">
+  const addToDoField = document.createElement('div');
+  addToDoField.classList.add('add-to-do-item');
+  addToDoField.innerHTML = `
       <div class="icon-box"></div>
       <input
         class="add-to-do-input"
@@ -10,24 +13,25 @@ export const AddToDoField = () => {
         placeholder="Write something to do..."
       />
       <div  class="add-to-do-button">ADD TASK</div>
-    </div>`;
+    `;
+  return addToDoField;
 };
 
-//method to initialize add to do (inside main.js) - we pass here html element of whole section
+// method to initialize add to do (inside main.js) - we pass here html element of whole section
 export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
-  const addToDoButton =
-    addToDoSectionHTMLElement.querySelector(".add-to-do-button");
-  const addToDoInput =
-    addToDoSectionHTMLElement.querySelector(".add-to-do-input");
+  const addToDoButton = addToDoSectionHTMLElement.querySelector('.add-to-do-button');
+  const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
 
   const handleAddToDoButtonClick = () => {
-    //get value from input
+    console.log(getTasksDataFromLocalStorage());
+    // get value from input
     const todoTextMessage = addToDoInput.value;
-    //inject on the top of the section ToDoItem with the message from input
+    // inject on the top of the section ToDoItem with the message from input
+    addTaskToStorage(todoTextMessage);
     addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage));
     // TODO: clear input field
-    addToDoInput.value = "";
+    addToDoInput.value = '';
   };
 
-  addToDoButton.addEventListener("click", handleAddToDoButtonClick);
+  addToDoButton.addEventListener('click', handleAddToDoButtonClick);
 };

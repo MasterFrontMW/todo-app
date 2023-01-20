@@ -5,7 +5,6 @@
   align-items: center;
 }
 
-/*TODO: add custom styles of checkbox*/
 .to-do-element-checkbox {
   margin-right: 10px;
 }
@@ -27,38 +26,36 @@
   width: 18px;
   height: 18px;
   margin-left: auto;
-  background-image: url("../assets/editIcon.svg") ;
-  background-size:100%;
+  background-image: url("../assets/editIcon.svg");
+  background-size: 100%;
   background-repeat: no-repeat;
   opacity: 0.4;
 }
-
 
 .edit-button:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-.task-message:focus{
+.task-message {
+  animation: intro-load 0.8s forwards;
+  padding: 0.5px 1px;
+}
+
+.task-message:focus {
   background: var(--color-light-grey);
 }
 
-.task-message {
-  animation: introLoad 0.8s forwards ;
-  padding: 0.5px 1px ;
-}
-
-@keyframes introLoad {
+@keyframes intro-load {
   from {
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 
   to {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
-
 }
 
-.to-do-element-checkbox:hover{
+.to-do-element-checkbox:hover {
   cursor: pointer;
 }

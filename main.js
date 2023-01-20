@@ -1,21 +1,30 @@
 // HERE WE WILL WRITE SOME ENDING JS SCRIPTS TO MANIPULATE PAGE
 
-import { Title } from "./src/Title/Title.js";
-import {
-  AddToDoField,
-  initializeAddToDoField,
-} from "./src/AddToDoItem/AddToDoField.js";
+import { Title } from './src/Title/Title';
 
-//selectors
+import { AddToDoField, initializeAddToDoField } from './src/AddToDoItem/AddToDoField';
+import { getTasksDataFromLocalStorage } from './src/helpers/storage';
+import { ToDoItem } from './src/ToDoItem/ToDoItem';
 
-const pageTitle = document.querySelector("#title");
-const addToDoSection1 = document.querySelector("#todo-section");
+// selectors
+const pageTitle = document.querySelector('#title');
+const addToDoSection = document.querySelector('#todo-section');
+
+// load data from local storage and render
+const dataOnLoad = getTasksDataFromLocalStorage();
+console.log(dataOnLoad);
+const renderTasks = () => {
+  dataOnLoad.forEach((task, index) => {
+    addToDoSection.prepend(ToDoItem(task, index));
+  });
+};
 
 const initializeApp = () => {
+  renderTasks();
   pageTitle.innerHTML = Title();
-  addToDoSection1.innerHTML = AddToDoField();
+  addToDoSection.append(AddToDoField());
 
-  initializeAddToDoField(addToDoSection1);
+  initializeAddToDoField(addToDoSection);
 };
 
 initializeApp();
