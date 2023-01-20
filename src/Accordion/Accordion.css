@@ -1,0 +1,66 @@
+.accordion-wrapper {
+  justify-content: center;
+  width: 100%;
+}
+
+.accordion-item {
+  border: 2px solid #333;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 2px 4px;
+}
+
+.accordion-title {
+  display: flex;
+  background-size: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-family: "Roboto Slab", serif;
+}
+
+.accordion-plus-sign {
+  content: "";
+  background-color: black;
+  width: 1.5px;
+  height: 12px;
+  margin-right: 5px;
+  transition: 0.5s;
+}
+
+.accordion-plus-sign::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 1.5px;
+  height: 12px;
+  transform: rotate(90deg);
+  transition: 0.5s;
+}
+
+.accordion-plus-sign.active {
+  transform: rotate(270deg);
+  transition: 1s;
+}
+
+.accordion-plus-sign.active::after {
+  transform: rotate(0deg);
+  transition: 0.3s;
+}
+
+.accordion-content {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  max-height: 0;
+  font-size: 12px;
+  transition: max-height 0.5s ease-out;
+}
+
+.accordion-title.active + .accordion-content {
+  max-height: 30px;
+}
+
+.accordion-title:hover {
+  cursor: pointer;
+}

@@ -27,4 +27,7 @@
 
   /* ToDoItem */
   --todoItem-height: 50px;
+
+  /* accordion */
+  --accordion-min-height: 30px;
 }
