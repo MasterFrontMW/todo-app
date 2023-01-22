@@ -8,15 +8,14 @@ jobs:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
       - name: Lint
-        run: npm lint && npm stylelint
-      - name: Deploy to preview channel
+        run: npm run lint && npm run stylelint
+      - name: build application
         run: npm run build
+      - name: Deploy to preview channel
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
