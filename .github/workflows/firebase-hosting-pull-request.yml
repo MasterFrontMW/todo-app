@@ -9,8 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint && npm run stylelint
+      - name: build application
+        run: npm run build
+      - name: Deploy to preview channel
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TO_DO_APP_MASTER_FRONT }}'
