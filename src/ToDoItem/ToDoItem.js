@@ -1,6 +1,7 @@
 import './ToDoItem.css';
 
-import { editTaskInStorage, deleteTaskStorage } from '../helpers/storage';
+import { editTaskInStorage } from '../helpers/storage';
+import { deleteTaskStorage } from '../helpers/storage';
 
 export const ToDoItem = (message, id) => {
   // CREATION OF ELEMENTS
