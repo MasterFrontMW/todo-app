@@ -22,13 +22,16 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoButton = addToDoSectionHTMLElement.querySelector('.add-to-do-button');
   const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
 
+  function createTaskStorage(name) {
+    return { complete: false, name, id: Date.now().toString() };
+  }
+
   const handleAddToDoButtonClick = () => {
-    // get value from input
     const todoTextMessage = addToDoInput.value;
-    // inject on the top of the section ToDoItem with the message from input
-    addTaskToStorage(todoTextMessage);
-    addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage));
-    // TODO: clear input field
+    const taskInStorage = createTaskStorage(todoTextMessage);
+    addTaskToStorage(taskInStorage);
+    const idOfNewTask = taskInStorage.id;
+    addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage, idOfNewTask));
     addToDoInput.value = '';
   };
 

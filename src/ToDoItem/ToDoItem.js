@@ -1,9 +1,15 @@
 import './ToDoItem.css';
 
+import { editTaskInStorage } from '../helpers/storage';
+import { deleteTaskStorage } from '../helpers/storage';
+import { getTasksDataFromLocalStorage } from '../helpers/storage';
+
 export const ToDoItem = (message, id) => {
   // CREATION OF ELEMENTS
+
   const toDoItemElement = document.createElement('div');
   toDoItemElement.classList.add('to-do-element-wrapper');
+  toDoItemElement.dataset.id = id;
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
@@ -34,11 +40,33 @@ export const ToDoItem = (message, id) => {
     editButton.style.opacity = 0.4;
   };
 
+  const checkboxClick = (e) => {
+    if (checkbox.checked) {
+      e.preventDefault();
+      return;
+    }
+    toDoMessage.contentEditable = true;
+    toDoMessage.focus();
+    e.preventDefault();
+    editButton.style.opacity = 1;
+    const blurClick = () => {
+      const newTaskTitle = toDoMessage.innerHTML;
+      editTaskInStorage(id, newTaskTitle);
+    };
+    toDoMessage.addEventListener('blur', blurClick);
+    editButton.removeEventListener('mouseout', editButtonHoverOff);
+  };
+
   const handleEditToDoButtonClick = () => {
     if (!checkbox.checked) {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
       editButton.style.opacity = 1;
+      const blurClick = () => {
+        const newTaskTitle = toDoMessage.innerHTML;
+        editTaskInStorage(id, newTaskTitle);
+      };
+      toDoMessage.addEventListener('blur', blurClick);
       editButton.removeEventListener('mouseout', editButtonHoverOff);
     }
   };
@@ -47,14 +75,15 @@ export const ToDoItem = (message, id) => {
     if (checkbox.checked) {
       toDoMessage.contentEditable = false;
       checkmark.classList.add('grey-border');
+      toDoMessage.complete = true;
       return;
     }
     checkmark.classList.remove('grey-border');
   };
 
-  const hadnleDeleteTaskButtonClick = () => {
-    // TODO: remove task from storage
+  const handleDeleteTaskButtonClick = () => {
     toDoItemElement.remove();
+    deleteTaskStorage(id);
   };
 
   const clickOutsideTask = (e) => {
@@ -66,17 +95,19 @@ export const ToDoItem = (message, id) => {
     }
   };
 
-  closeButton.addEventListener('click', () => hadnleDeleteTaskButtonClick);
+  toDoMessage.addEventListener('click', checkboxClick);
+  closeButton.addEventListener('click', handleDeleteTaskButtonClick);
   editButton.addEventListener('click', handleEditToDoButtonClick);
   checkbox.addEventListener('click', handleCheckToDoElement);
   document.body.addEventListener('click', clickOutsideTask);
 
   // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
-  toDoItemElement.appendChild(checkbox);
-  toDoItemElement.appendChild(toDoMessage);
+  checkboxLabelWrapper.appendChild(checkbox);
+  checkboxLabelWrapper.appendChild(checkmark);
+  checkboxLabelWrapper.appendChild(toDoMessage);
+  toDoItemElement.appendChild(checkboxLabelWrapper);
   toDoItemElement.appendChild(editButton);
   toDoItemElement.appendChild(closeButton);
-  toDoItemElement.dataset.id = id;
 
   return toDoItemElement;
 };

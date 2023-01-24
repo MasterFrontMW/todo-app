@@ -14,9 +14,9 @@ const addToDoSection = document.querySelector('#todo-section');
 
 // load data from local storage and render tasks
 const dataOnLoad = getTasksDataFromLocalStorage();
-const renderTasks = () => {
-  dataOnLoad.forEach((task, index) => {
-    addToDoSection.prepend(ToDoItem(task, index));
+export const renderTasks = () => {
+  dataOnLoad.forEach((task) => {
+    addToDoSection.prepend(ToDoItem(task.name, task.id));
   });
 };
 

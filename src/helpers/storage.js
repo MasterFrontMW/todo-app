@@ -15,11 +15,18 @@ export const addTaskToStorage = (taskTitle) => {
   saveDataInStorageForKey(STORAGE_KEY, newTasks);
 };
 
-export const editTaskInStorage = (taskTitle, newTaskTitle) => {
+export const editTaskInStorage = (id, newTaskTitle) => {
   const currentTasks = getTasksDataFromLocalStorage();
-  const indexOfEditedTask = currentTasks.findIndex((task) => task === taskTitle);
-  const newTasks = ([...currentTasks][indexOfEditedTask] = newTaskTitle);
-  saveDataInStorageForKey(STORAGE_KEY, newTasks);
+  const indexOfEditedTask = currentTasks.findIndex((task) => task.id === id);
+  currentTasks[indexOfEditedTask].name = newTaskTitle;
+  saveDataInStorageForKey(STORAGE_KEY, currentTasks);
+};
+
+export const deleteTaskStorage = (id) => {
+  const currentTasks = getTasksDataFromLocalStorage();
+  const indexOfDeletedTask = currentTasks.findIndex((task) => task.id === id);
+  const newTaskList = currentTasks.filter((task) => task !== currentTasks[indexOfDeletedTask]);
+  saveDataInStorageForKey(STORAGE_KEY, newTaskList);
 };
 
 // TODO: ADD here remove task from storage functionality
