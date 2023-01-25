@@ -25,6 +25,8 @@ export const initializeAccordion = (accordionHTMLSection) => {
     const accordionItemContent = accordionTitle.nextElementSibling;
 
     const accordionPlusSign = accordionTitle.lastElementChild;
+    const body = document.querySelector('body');
+    body.style.overflow = 'hidden';
 
     const handleAccordionCollapse = () => {
       accordionPlusSign.classList.toggle('active');
