@@ -36,8 +36,8 @@
     "vite": "^3.0.7"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.css": "stylelint --fix"
+    "*.js": "eslint",
+    "*.css": "stylelint "
   },
   "dependencies": {
     "firebase": "^9.16.0"
