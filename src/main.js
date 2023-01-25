@@ -1,10 +1,10 @@
 // HERE WE WILL WRITE SOME ENDING JS SCRIPTS TO MANIPULATE PAGE
-import './src/utils/firebase';
-import { Title } from './src/components/Title/Title';
+import './lib/firebase';
+import { Title } from './components/Title/Title';
 
-import { Accordion, initializeAccordion } from './src/components/Accordion/Accordion';
+import { Accordion, initializeAccordion } from './components/Accordion/Accordion';
 
-import { AddToDoField, initializeAddToDoField } from './src/components/AddToDoItem/AddToDoField';
+import { AddToDoField, initializeAddToDoField } from './components/AddToDoItem/AddToDoField';
 
 // selectors
 
