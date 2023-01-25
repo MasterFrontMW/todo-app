@@ -1,3 +1,7 @@
+@import url("../assets/closeIcon.svg");
+@import url("../assets/checkIcon.svg");
+@import url("../assets/editIcon.svg");
+
 .to-do-element-wrapper {
   width: 100%;
   height: 50px;
