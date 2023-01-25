@@ -1,7 +1,3 @@
-@import url("../assets/closeIcon.svg");
-@import url("../assets/checkIcon.svg");
-@import url("../assets/editIcon.svg");
-
 .to-do-element-wrapper {
   width: 100%;
   height: 50px;
@@ -14,7 +10,7 @@
   height: 10px;
   margin-left: 10px;
   opacity: 0.4;
-  background: url("../assets/closeIcon.svg") center;
+  background: url("/src/assets/closeIcon.svg") center;
 }
 
 .close-button:hover {
@@ -71,7 +67,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked + .checkmark {
   background: var(--color-light-grey);
-  background-image: url("../assets/checkIcon.svg");
+  background-image: url("/src/assets/checkIcon.svg");
   background-size: cover;
 }
 
@@ -98,7 +94,7 @@ input[type="checkbox"]:checked:hover ~ .task-message {
   width: 18px;
   height: 18px;
   margin-left: auto;
-  background-image: url("../assets/editIcon.svg");
+  background-image: url("/src/assets/editIcon.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   opacity: 0.4;
