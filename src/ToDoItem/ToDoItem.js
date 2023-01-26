@@ -1,8 +1,13 @@
 import './ToDoItem.css';
 
-import { editTaskInStorage, deleteTaskStorage } from '../helpers/storage';
+import {
+  editTaskInStorage,
+  deleteTaskStorage,
+  addCheckedTaskToStorage,
+  addUncheckedTaskToStorage,
+} from '../helpers/storage';
 
-export const ToDoItem = (message, id) => {
+export const ToDoItem = (message, id, complete) => {
   // CREATION OF ELEMENTS
 
   const toDoItemElement = document.createElement('div');
@@ -12,6 +17,7 @@ export const ToDoItem = (message, id) => {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('to-do-element-checkbox');
+  checkbox.checked = complete;
 
   const checkmark = document.createElement('div');
   checkmark.classList.add('checkmark');
@@ -74,8 +80,10 @@ export const ToDoItem = (message, id) => {
       toDoMessage.contentEditable = false;
       checkmark.classList.add('grey-border');
       toDoMessage.complete = true;
+      addCheckedTaskToStorage(id);
       return;
     }
+    addUncheckedTaskToStorage(id);
     checkmark.classList.remove('grey-border');
   };
 
