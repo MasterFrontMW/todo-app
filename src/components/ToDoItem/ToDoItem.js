@@ -1,13 +1,23 @@
 import './ToDoItem.css';
 
-export const ToDoItem = (message) => {
+import {
+  editTaskInStorage,
+  deleteTaskStorage,
+  addCheckedTaskToStorage,
+  addUncheckedTaskToStorage,
+} from '../../helpers/storage';
+
+export const ToDoItem = (message, id, complete) => {
   // CREATION OF ELEMENTS
+
   const toDoItemElement = document.createElement('div');
   toDoItemElement.classList.add('to-do-element-wrapper');
+  toDoItemElement.dataset.id = id;
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('to-do-element-checkbox');
+  checkbox.checked = complete;
 
   const checkmark = document.createElement('div');
   checkmark.classList.add('checkmark');
@@ -26,7 +36,6 @@ export const ToDoItem = (message) => {
   closeButton.classList.add('close-button');
 
   // METHODS
-
   const editButtonHoverOn = () => {
     editButton.style.opacity = 1;
   };
@@ -41,28 +50,46 @@ export const ToDoItem = (message) => {
       return;
     }
     toDoMessage.contentEditable = true;
-    editButton.removeEventListener('mouseout', editButtonHoverOff);
     toDoMessage.focus();
     e.preventDefault();
     editButton.style.opacity = 1;
+    const blurClick = () => {
+      const newTaskTitle = toDoMessage.innerHTML;
+      editTaskInStorage(id, newTaskTitle);
+    };
+    toDoMessage.addEventListener('blur', blurClick);
+    editButton.removeEventListener('mouseout', editButtonHoverOff);
   };
 
-  const editToDoButton = () => {
+  const handleEditToDoButtonClick = () => {
     if (!checkbox.checked) {
       toDoMessage.contentEditable = true;
       toDoMessage.focus();
       editButton.style.opacity = 1;
+      const blurClick = () => {
+        const newTaskTitle = toDoMessage.innerHTML;
+        editTaskInStorage(id, newTaskTitle);
+      };
+      toDoMessage.addEventListener('blur', blurClick);
       editButton.removeEventListener('mouseout', editButtonHoverOff);
     }
   };
 
-  const checkToDoElement = () => {
+  const handleCheckToDoElement = () => {
     if (checkbox.checked) {
       toDoMessage.contentEditable = false;
       checkmark.classList.add('grey-border');
+      toDoMessage.complete = true;
+      addCheckedTaskToStorage(id);
       return;
     }
+    addUncheckedTaskToStorage(id);
     checkmark.classList.remove('grey-border');
+  };
+
+  const handleDeleteTaskButtonClick = () => {
+    toDoItemElement.remove();
+    deleteTaskStorage(id);
   };
 
   const clickOutsideTask = (e) => {
@@ -74,11 +101,10 @@ export const ToDoItem = (message) => {
     }
   };
 
-  // ASSINGNIG EVENT LISTENERS AND PASSING METHODS FROM UPPER DEFINITION
-  editButton.addEventListener('click', editToDoButton);
-  checkbox.addEventListener('click', checkToDoElement);
   toDoMessage.addEventListener('click', checkboxClick);
-  closeButton.addEventListener('click', () => toDoItemElement.remove());
+  closeButton.addEventListener('click', handleDeleteTaskButtonClick);
+  editButton.addEventListener('click', handleEditToDoButtonClick);
+  checkbox.addEventListener('click', handleCheckToDoElement);
   document.body.addEventListener('click', clickOutsideTask);
 
   // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
