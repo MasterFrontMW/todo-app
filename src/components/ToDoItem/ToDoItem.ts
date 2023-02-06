@@ -12,7 +12,6 @@ export const ToDoItem = ({ name, id, completed = false }: ToDoItemProps) => {
   // CREATION OF ELEMENTS
   const taskState = { name, id, completed };
 
-  console.log({ name, id, completed });
   const toDoItemElement = document.createElement('div');
   toDoItemElement.classList.add('to-do-element-wrapper');
   toDoItemElement.dataset.id = id;
@@ -75,7 +74,6 @@ export const ToDoItem = ({ name, id, completed = false }: ToDoItemProps) => {
   closeButton.addEventListener('click', handleDeleteTaskButtonClick);
   checkbox.addEventListener('click', handleOnCheckboxClick);
   checkboxLabelWrapper.addEventListener('click', (e) => {
-    console.log(e.target, e.currentTarget);
     if (e.target !== checkmark && e.target !== checkbox) {
       e.preventDefault();
     }
