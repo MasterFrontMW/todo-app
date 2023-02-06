@@ -27,6 +27,11 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   }
 
   const handleAddToDoButtonClick = () => {
+    if (!addToDoInput.value.trim()) {
+      alert('Please insert the task');
+      addToDoInput.value = '';
+      return;
+    }
     const todoTextMessage = addToDoInput.value;
     const taskInStorage = createTaskStorage(todoTextMessage);
     addTaskToStorage(taskInStorage);
