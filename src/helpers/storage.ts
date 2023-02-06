@@ -1,12 +1,18 @@
 // eslint-disable-next-line import/prefer-default-export
 import { STORAGE_KEY } from '../config/consts';
 
+export type Task = {
+  name: string;
+  id: string;
+  completed: boolean;
+};
+
 const saveDataInStorageForKey = (key, data) => {
   return localStorage.setItem(key, JSON.stringify(data));
 };
 
 export const getTasksDataFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  return JSON.parse(localStorage.getItem(STORAGE_KEY) || '') || [];
 };
 
 export const addTaskToStorage = (taskTitle) => {
@@ -15,11 +21,16 @@ export const addTaskToStorage = (taskTitle) => {
   saveDataInStorageForKey(STORAGE_KEY, newTasks);
 };
 
-export const editTaskInStorage = (id, newTaskTitle) => {
+export const updateTaskInStorage = (id: string, task: Task) => {
   const currentTasks = getTasksDataFromLocalStorage();
-  const indexOfEditedTask = currentTasks.findIndex((task) => task.id === id);
-  currentTasks[indexOfEditedTask].name = newTaskTitle;
-  saveDataInStorageForKey(STORAGE_KEY, currentTasks);
+  const updatedTasks = currentTasks.map((currentTask) => {
+    if (currentTask.id === id) {
+      return task;
+    }
+    return currentTask;
+  });
+
+  saveDataInStorageForKey(STORAGE_KEY, updatedTasks);
 };
 
 export const deleteTaskStorage = (id) => {

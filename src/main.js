@@ -9,8 +9,6 @@ import { getTasksDataFromLocalStorage } from './helpers/storage';
 
 import { ToDoItem } from './components/ToDoItem/ToDoItem';
 
-
-
 // selectors
 const pageTitle = document.querySelector('#title');
 const accordion = document.querySelector('#accordion');
@@ -20,7 +18,7 @@ const addToDoSection = document.querySelector('#todo-section');
 const dataOnLoad = getTasksDataFromLocalStorage();
 export const renderTasks = () => {
   dataOnLoad.forEach((task) => {
-    addToDoSection.prepend(ToDoItem(task.name, task.id, task.complete));
+    addToDoSection.prepend(ToDoItem(task));
   });
 };
 

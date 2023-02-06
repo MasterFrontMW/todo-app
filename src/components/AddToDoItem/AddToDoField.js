@@ -1,6 +1,6 @@
 import './AddToDoField.css';
-import { ToDoItem } from '../ToDoItem/ToDoItem';
-import { addTaskToStorage } from '../../helpers/storage';
+import { ToDoItem } from '../ToDoItem/ToDoItem.ts';
+import { addTaskToStorage } from '../../helpers/storage.ts';
 
 export const AddToDoField = () => {
   const addToDoField = document.createElement('div');
@@ -23,7 +23,7 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
 
   function createTaskStorage(name) {
-    return { complete: false, id: Date.now().toString(), name };
+    return { completed: false, id: Date.now().toString(), name };
   }
 
   const handleAddToDoButtonClick = () => {
