@@ -2,10 +2,10 @@ import './ToDoItem.css';
 
 import { updateTaskInStorage, deleteTaskStorage } from '../../helpers/storage';
 
-export type ToDoItemProps = {
+type ToDoItemProps = {
+  completed?: boolean;
   name: string;
   id: string;
-  completed?: boolean;
 };
 
 export const ToDoItem = ({ name, id, completed = false }: ToDoItemProps) => {
@@ -39,14 +39,6 @@ export const ToDoItem = ({ name, id, completed = false }: ToDoItemProps) => {
   closeButton.classList.add('close-button');
 
   // METHODS
-  const editButtonHoverOn = () => {
-    editButton.style.opacity = '1';
-  };
-
-  const editButtonHoverOff = () => {
-    editButton.style.opacity = '0.4';
-  };
-
   const handleOnCheckboxClick = () => {
     editButton.style.opacity = '1';
     taskState.completed = !taskState.completed;
