@@ -18,7 +18,7 @@ export const addTaskToStorage = (taskTitle) => {
 export const editTaskInStorage = (id, newTaskTitle) => {
   const currentTasks = getTasksDataFromLocalStorage();
   const indexOfEditedTask = currentTasks.findIndex((task) => task.id === id);
-  currentTasks[indexOfEditedTask].name = newTaskTitle;
+  currentTasks[indexOfEditedTask].message = newTaskTitle;
   saveDataInStorageForKey(STORAGE_KEY, currentTasks);
 };
 
@@ -29,18 +29,14 @@ export const deleteTaskStorage = (id) => {
   saveDataInStorageForKey(STORAGE_KEY, newTaskList);
 };
 
-export const addCheckedTaskToStorage = (id) => {
+export const updateCheckedTasks = (id, checked) => {
   const currentTasks = getTasksDataFromLocalStorage();
   const checkedTask = currentTasks.find((task) => task.id === id);
-  checkedTask.complete = true;
+  if (checked) {
+    checkedTask.completed = true;
+    saveDataInStorageForKey(STORAGE_KEY, currentTasks);
+    return;
+  }
+  checkedTask.completed = false;
   saveDataInStorageForKey(STORAGE_KEY, currentTasks);
 };
-
-export const addUncheckedTaskToStorage = (id) => {
-  const currentTasks = getTasksDataFromLocalStorage();
-  const checkedTask = currentTasks.find((task) => task.id === id);
-  checkedTask.complete = false;
-  saveDataInStorageForKey(STORAGE_KEY, currentTasks);
-};
-
-// TODO: ADD here remove task from storage functionality

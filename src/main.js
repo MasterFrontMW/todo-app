@@ -20,7 +20,8 @@ const addToDoSection = document.querySelector('#todo-section');
 const dataOnLoad = getTasksDataFromLocalStorage();
 export const renderTasks = () => {
   dataOnLoad.forEach((task) => {
-    addToDoSection.prepend(ToDoItem(task.name, task.id, task.complete));
+    console.log(task);
+    addToDoSection.prepend(ToDoItem(task.message, task.id, task.complete));
   });
 };
 

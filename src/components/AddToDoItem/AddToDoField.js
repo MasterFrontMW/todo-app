@@ -22,8 +22,8 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoButton = addToDoSectionHTMLElement.querySelector('.add-to-do-button');
   const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
 
-  function createTaskStorage(name) {
-    return { complete: false, id: Date.now().toString(), name };
+  function createTaskStorage(message) {
+    return { completed: false, id: Date.now().toString(), message };
   }
 
   const handleAddToDoButtonClick = () => {
