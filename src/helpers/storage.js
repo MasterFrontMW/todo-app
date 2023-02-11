@@ -15,13 +15,6 @@ export const addTaskToStorage = (taskTitle) => {
   saveDataInStorageForKey(STORAGE_KEY, newTasks);
 };
 
-export const editTaskInStorage = (id, newTaskTitle) => {
-  const currentTasks = getTasksDataFromLocalStorage();
-  const indexOfEditedTask = currentTasks.findIndex((task) => task.id === id);
-  currentTasks[indexOfEditedTask].message = newTaskTitle;
-  saveDataInStorageForKey(STORAGE_KEY, currentTasks);
-};
-
 export const deleteTaskStorage = (id) => {
   const currentTasks = getTasksDataFromLocalStorage();
   const indexOfDeletedTask = currentTasks.findIndex((task) => task.id === id);
@@ -29,14 +22,15 @@ export const deleteTaskStorage = (id) => {
   saveDataInStorageForKey(STORAGE_KEY, newTaskList);
 };
 
-export const updateCheckedTasks = (id, checked) => {
+export const updateTaskInStorage = (id, checked, newTaskMessage) => {
   const currentTasks = getTasksDataFromLocalStorage();
-  const checkedTask = currentTasks.find((task) => task.id === id);
+  const updatedTask = currentTasks.find((task) => task.id === id);
+  updatedTask.message = newTaskMessage;
   if (checked) {
-    checkedTask.completed = true;
+    updatedTask.completed = true;
     saveDataInStorageForKey(STORAGE_KEY, currentTasks);
     return;
   }
-  checkedTask.completed = false;
+  updatedTask.completed = false;
   saveDataInStorageForKey(STORAGE_KEY, currentTasks);
 };

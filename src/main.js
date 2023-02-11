@@ -21,7 +21,7 @@ const dataOnLoad = getTasksDataFromLocalStorage();
 export const renderTasks = () => {
   dataOnLoad.forEach((task) => {
     console.log(task);
-    addToDoSection.prepend(ToDoItem(task.message, task.id, task.complete));
+    addToDoSection.prepend(ToDoItem(task));
   });
 };
 

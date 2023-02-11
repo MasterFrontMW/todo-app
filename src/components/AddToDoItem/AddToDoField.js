@@ -35,8 +35,7 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
     const todoTextMessage = addToDoInput.value;
     const taskInStorage = createTaskStorage(todoTextMessage);
     addTaskToStorage(taskInStorage);
-    const idOfNewTask = taskInStorage.id;
-    addToDoSectionHTMLElement.prepend(ToDoItem(todoTextMessage, idOfNewTask));
+    addToDoSectionHTMLElement.prepend(ToDoItem(taskInStorage));
     addToDoInput.value = '';
   };
 
