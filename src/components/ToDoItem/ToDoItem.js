@@ -20,6 +20,9 @@ export const ToDoItem = ({ message, id, completed }) => {
 
   const checkmark = document.createElement('div');
   checkmark.classList.add('checkmark');
+  if (checkbox.checked) {
+    checkmark.classList.add('grey-border');
+  }
 
   const checkboxLabelWrapper = document.createElement('label');
   checkboxLabelWrapper.classList.add('checkbox-label-wrapper');
@@ -41,7 +44,7 @@ export const ToDoItem = ({ message, id, completed }) => {
     editTaskButton.style.opacity = 0.4;
   };
 
-  const editingToDoMessage = () => {
+  const handleEditToDoMessage = () => {
     if (!checkbox.checked) {
       taskMessage.contentEditable = true;
       taskMessage.focus();
@@ -53,12 +56,7 @@ export const ToDoItem = ({ message, id, completed }) => {
   const handleCheckToDoElement = () => {
     newTask.completed = !newTask.completed;
     updateTaskInStorage(newTask);
-    if (checkbox.checked) {
-      taskMessage.contentEditable = false;
-      checkmark.classList.add('grey-border');
-      return;
-    }
-    checkmark.classList.remove('grey-border');
+    checkmark.classList.toggle('grey-border');
   };
 
   const handleDeleteTaskButtonClick = () => {
@@ -83,11 +81,11 @@ export const ToDoItem = ({ message, id, completed }) => {
   });
   taskMessage.addEventListener('click', (e) => {
     e.preventDefault();
-    editingToDoMessage();
+    handleEditToDoMessage();
   });
   deleteTaskButton.addEventListener('click', handleDeleteTaskButtonClick);
   editTaskButton.addEventListener('click', () => {
-    editingToDoMessage();
+    handleEditToDoMessage();
   });
   checkbox.addEventListener('click', handleCheckToDoElement);
   document.body.addEventListener('click', clickOutsideTask);
