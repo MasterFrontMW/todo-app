@@ -105,6 +105,10 @@ input[type="checkbox"]:checked:hover ~ .task-message {
   cursor: pointer;
 }
 
+.edit-button.black-button {
+  opacity: 1;
+}
+
 .to-do-element-checkbox:hover {
   cursor: pointer;
 }

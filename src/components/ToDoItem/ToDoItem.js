@@ -40,16 +40,11 @@ export const ToDoItem = ({ message, id, completed }) => {
 
   // METHODS
 
-  const handleMouseOut = () => {
-    editTaskButton.style.opacity = 0.4;
-  };
-
   const handleEditToDoMessage = () => {
     if (!checkbox.checked) {
       taskMessage.contentEditable = true;
       taskMessage.focus();
-      editTaskButton.style.opacity = 1;
-      editTaskButton.removeEventListener('mouseout', handleMouseOut);
+      editTaskButton.classList.add('black-button');
     }
   };
 
@@ -64,20 +59,16 @@ export const ToDoItem = ({ message, id, completed }) => {
     deleteTaskStorage(id);
   };
 
-  const clickOutsideTask = (e) => {
+  const handleClickOutsideTask = (e) => {
     if (e.target !== taskMessage && e.target !== editTaskButton) {
       taskMessage.contentEditable = false;
-      editTaskButton.style.opacity = 0.4;
-      editTaskButton.addEventListener('mouseover', () => {
-        editTaskButton.style.opacity = 1;
-      });
-      editTaskButton.addEventListener('mouseout', handleMouseOut);
     }
   };
 
   taskMessage.addEventListener('blur', () => {
     newTask.message = taskMessage.innerText;
     updateTaskInStorage(newTask);
+    editTaskButton.classList.remove('black-button');
   });
   taskMessage.addEventListener('click', (e) => {
     e.preventDefault();
@@ -88,7 +79,7 @@ export const ToDoItem = ({ message, id, completed }) => {
     handleEditToDoMessage();
   });
   checkbox.addEventListener('click', handleCheckToDoElement);
-  document.body.addEventListener('click', clickOutsideTask);
+  document.body.addEventListener('click', handleClickOutsideTask);
 
   // INJECT ELEMENTS WITH PROPER ORDER AND RETURN WHOLE TODO ELEMENT
   checkboxLabelWrapper.appendChild(checkbox);
