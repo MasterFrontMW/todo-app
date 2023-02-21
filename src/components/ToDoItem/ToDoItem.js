@@ -2,21 +2,19 @@ import './ToDoItem.css';
 
 import { deleteTaskStorage, updateTaskInStorage } from '../../helpers/storage';
 
-export const ToDoItem = ({ message, id, completed }) => {
+export const ToDoItem = ({ message, id, completed = false }) => {
   // CREATION OF ELEMENTS
 
-  const newTask = { completed: false, id: '', message: '' };
+  const taskState = { completed, id, message };
 
   const toDoItemElement = document.createElement('div');
   toDoItemElement.classList.add('to-do-element-wrapper');
   toDoItemElement.dataset.id = id;
-  newTask.id = id;
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('to-do-element-checkbox');
   checkbox.checked = completed;
-  newTask.completed = completed;
 
   const checkmark = document.createElement('div');
   checkmark.classList.add('checkmark');
@@ -30,7 +28,6 @@ export const ToDoItem = ({ message, id, completed }) => {
   const taskMessage = document.createElement('p');
   taskMessage.classList.add('task-message');
   taskMessage.innerText = message;
-  newTask.message = message;
 
   const editTaskButton = document.createElement('div');
   editTaskButton.classList.add('edit-button');
@@ -49,8 +46,8 @@ export const ToDoItem = ({ message, id, completed }) => {
   };
 
   const handleCheckToDoElement = () => {
-    newTask.completed = !newTask.completed;
-    updateTaskInStorage(newTask);
+    taskState.completed = !taskState.completed;
+    updateTaskInStorage(taskState);
     checkmark.classList.toggle('grey-border');
   };
 
@@ -66,8 +63,8 @@ export const ToDoItem = ({ message, id, completed }) => {
   };
 
   taskMessage.addEventListener('blur', () => {
-    newTask.message = taskMessage.innerText;
-    updateTaskInStorage(newTask);
+    taskState.message = taskMessage.innerText;
+    updateTaskInStorage(taskState);
     editTaskButton.classList.remove('black-button');
   });
   taskMessage.addEventListener('click', (e) => {

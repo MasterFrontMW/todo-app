@@ -24,10 +24,13 @@ export const deleteTaskStorage = (id) => {
   saveDataInStorageForKey(STORAGE_KEY, newTaskList);
 };
 
-export const updateTaskInStorage = (Task) => {
+export const updateTaskInStorage = (task) => {
   const currentTasks = getTasksDataFromLocalStorage();
-  const updatedTask = currentTasks.find((task) => task.id === Task.id);
-  updatedTask.message = Task.message;
-  updatedTask.completed = Task.completed;
-  saveDataInStorageForKey(STORAGE_KEY, currentTasks);
+  const updatedTasks = currentTasks.map((currentTask) => {
+    if (currentTask.id === task.id) {
+      return task;
+    }
+    return currentTask;
+  });
+  saveDataInStorageForKey(STORAGE_KEY, updatedTasks);
 };
