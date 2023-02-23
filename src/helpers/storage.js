@@ -1,8 +1,6 @@
 // eslint-disable-next-line import/prefer-default-export
 import { STORAGE_KEY } from '../config/consts';
 
-// let Task = { completed: false, id: '', message: '' };
-
 const saveDataInStorageForKey = (key, data) => {
   return localStorage.setItem(key, JSON.stringify(data));
 };
