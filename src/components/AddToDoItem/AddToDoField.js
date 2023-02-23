@@ -1,8 +1,11 @@
 import './AddToDoField.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
+import { addTaskToStorage } from '../../helpers/storage';
 
 export const AddToDoField = () => {
-  return `<div class="add-to-do-item">
+  const addToDoField = document.createElement('div');
+  addToDoField.classList.add('add-to-do-item');
+  addToDoField.innerHTML = `
       <div class="icon-box"></div>
       <input
         class="add-to-do-input"
@@ -10,7 +13,8 @@ export const AddToDoField = () => {
         placeholder="Write something to do..."
       />
       <div  class="add-to-do-button">ADD TASK</div>
-    </div>`;
+    `;
+  return addToDoField;
 };
 
 // method to initialize add to do (inside main.js) - we pass here html element of whole section
@@ -18,20 +22,22 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoButton = addToDoSectionHTMLElement.querySelector('.add-to-do-button');
   const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
 
-  const handleAddToDoButtonClick = () => {
-    // get value from input
-    const todoTextMessage = addToDoInput.value;
+  function createTaskStorage(message) {
+    return { completed: false, id: Date.now().toString(), message };
+  }
 
+  const handleAddToDoButtonClick = () => {
     if (!addToDoInput.value.trim()) {
       alert('Please insert the task');
       addToDoInput.value = '';
       return;
     }
-
-    // inject on the top of the section ToDoItem with the message from input
-    addToDoSectionHTMLElement.lastChild.before(ToDoItem(todoTextMessage));
-    // TODO: clear input field
+    const todoTextMessage = addToDoInput.value;
+    const taskInStorage = createTaskStorage(todoTextMessage);
+    addTaskToStorage(taskInStorage);
+    addToDoSectionHTMLElement.prepend(ToDoItem(taskInStorage));
     addToDoInput.value = '';
   };
+
   addToDoButton.addEventListener('click', handleAddToDoButtonClick);
 };
