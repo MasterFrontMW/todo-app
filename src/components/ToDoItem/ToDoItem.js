@@ -1,11 +1,11 @@
 import './ToDoItem.css';
 
-import { deleteTaskStorage, updateTaskInStorage } from '../../helpers/storage';
+import { updateTaskInGroupStorage, deleteTaskInGroupStorage } from '../../helpers/storage';
 
-export const ToDoItem = ({ message, id, completed = false }) => {
+export const ToDoItem = ({ message, groupId, id, completed = false }) => {
   // CREATION OF ELEMENTS
 
-  const taskState = { completed, id, message };
+  const taskState = { completed, groupId, id, message };
 
   const toDoItemElement = document.createElement('div');
   toDoItemElement.classList.add('to-do-element-wrapper');
@@ -47,13 +47,13 @@ export const ToDoItem = ({ message, id, completed = false }) => {
 
   const handleCheckToDoElement = () => {
     taskState.completed = !taskState.completed;
-    updateTaskInStorage(taskState);
+    updateTaskInGroupStorage(taskState);
     checkmark.classList.toggle('grey-border');
   };
 
   const handleDeleteTaskButtonClick = () => {
     toDoItemElement.remove();
-    deleteTaskStorage(id);
+    deleteTaskInGroupStorage(taskState, id);
   };
 
   const handleClickOutsideTask = (e) => {
@@ -64,7 +64,7 @@ export const ToDoItem = ({ message, id, completed = false }) => {
 
   taskMessage.addEventListener('blur', () => {
     taskState.message = taskMessage.innerText;
-    updateTaskInStorage(taskState);
+    updateTaskInGroupStorage(taskState);
     editTaskButton.classList.remove('black-button');
   });
   taskMessage.addEventListener('click', (e) => {
