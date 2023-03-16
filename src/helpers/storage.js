@@ -34,28 +34,6 @@ export const getGroupOfTasksDataFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem(STORAGE_GROUP_OF_TASKS_KEY)) || [];
 };
 
-// THIS IS ANOTHER SOLUTION OF updateTaskInGroupStorage LEFT BY PURPOSE
-
-// export const updateTaskInGroupStorage = (task) => {
-//   const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
-//   console.log(currentGroupOfTasks, task);
-//   const foundTaskGroup = currentGroupOfTasks.find((group) => {
-//     return group.tasks.find((item) => item.id === task.id);
-//   });
-//   const newUpdatedTasksInGroup = foundTaskGroup.tasks.map((item) =>
-//     item.id === task.id ? task : item,
-//   );
-//   const newUpdatedGroup = {
-//     ...foundTaskGroup,
-//     tasks: newUpdatedTasksInGroup,
-//   };
-
-//   const updatedAllGroups = currentGroupOfTasks.map((groupItem) =>
-//     groupItem.id === newUpdatedGroup.id ? newUpdatedGroup : groupItem,
-//   );
-//   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedAllGroups);
-// };
-
 export const updateTaskInGroupStorage = (task) => {
   const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
   const updatedAllGroups = [...currentGroupOfTasks].map((group) => {
@@ -71,12 +49,11 @@ export const updateTaskInGroupStorage = (task) => {
   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedAllGroups);
 };
 
-export const deleteTaskInGroupStorage = (task, id) => {
+export const deleteTaskInGroupStorage = (task) => {
   const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
   const foundGroupOfTasks = [...currentGroupOfTasks].find((group) => group.id === task.groupId);
-  const indexOfDeletedTask = foundGroupOfTasks.tasks.findIndex((tasks) => tasks.id === id);
   const newListOfTasksInFoundGroupOfTasks = foundGroupOfTasks.tasks.filter(
-    (tasksList) => tasksList !== foundGroupOfTasks.tasks[indexOfDeletedTask],
+    (tasksItem) => tasksItem.id !== task.id,
   );
   foundGroupOfTasks.tasks = newListOfTasksInFoundGroupOfTasks;
   const updatedGroupsOfTasks = currentGroupOfTasks.map((group) =>
@@ -85,27 +62,6 @@ export const deleteTaskInGroupStorage = (task, id) => {
 
   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedGroupsOfTasks);
 };
-
-// THIS IS ANOTHER SOLUTION OF deleteTaskInGroupStorage LEFT BY PURPOSE
-
-// export const deleteTaskInGroupStorage = (task, id) => {
-//   const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
-//   console.log(currentGroupOfTasks, task);
-//   const updatedAllGroups = [...currentGroupOfTasks].map((group) => {
-//     if (group.id === task.groupId) {
-//       console.log(group.tasks);
-//       const indexOfDeletedTask = group.tasks.findIndex((tasks) => tasks.id === id);
-//       console.log(indexOfDeletedTask);
-//       return {
-//         ...group,
-//         tasks: group.tasks.filter((tasksList) => tasksList !== group.tasks[indexOfDeletedTask]),
-//       };
-//     }
-//     return group;
-//   });
-
-//   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedAllGroups);
-// };
 
 export const addGroupOfTaskToStorage = (taskGroupTitle) => {
   const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
