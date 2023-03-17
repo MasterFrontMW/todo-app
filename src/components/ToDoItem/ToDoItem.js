@@ -2,10 +2,17 @@ import './ToDoItem.css';
 
 import { deleteTaskStorage, updateTaskInStorage } from '../../helpers/storage';
 
-export const ToDoItem = ({ message, id, completed = false }) => {
+export const ToDoItem = ({
+  message,
+  id,
+  completed = false,
+  createdAt,
+  groupId,
+  updatedAt,
+  endsAt,
+}) => {
   // CREATION OF ELEMENTS
-
-  const taskState = { completed, id, message };
+  const taskState = { completed, createdAt, endsAt, groupId, id, message, updatedAt };
 
   const toDoItemElement = document.createElement('div');
   toDoItemElement.classList.add('to-do-element-wrapper');
