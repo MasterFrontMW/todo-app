@@ -6,7 +6,6 @@ export const AddToDoField = () => {
   const addToDoField = document.createElement('div');
   addToDoField.classList.add('add-to-do-item');
   addToDoField.innerHTML = `
-      <div class="icon-box"></div>
       <input
         class="add-to-do-input"
         type="text"
@@ -17,10 +16,17 @@ export const AddToDoField = () => {
   return addToDoField;
 };
 
+export const TasksList = () => {
+  const tasksList = document.createElement('div');
+  tasksList.classList.add('tasks-list');
+  return tasksList;
+};
+
 // method to initialize add to do (inside main.js) - we pass here html element of whole section
 export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const addToDoButton = addToDoSectionHTMLElement.querySelector('.add-to-do-button');
   const addToDoInput = addToDoSectionHTMLElement.querySelector('.add-to-do-input');
+  const tasksList = document.querySelector('.tasks-list');
 
   function createTaskStorage(message) {
     return {
@@ -43,7 +49,7 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
     const todoTextMessage = addToDoInput.value;
     const taskInStorage = createTaskStorage(todoTextMessage);
     addTaskToStorage(taskInStorage);
-    addToDoSectionHTMLElement.prepend(ToDoItem(taskInStorage));
+    tasksList.prepend(ToDoItem(taskInStorage));
     addToDoInput.value = '';
   };
 

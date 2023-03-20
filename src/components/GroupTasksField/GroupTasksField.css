@@ -1,0 +1,36 @@
+.group-tasks-field {
+  width: fit-content;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+  border: 1px solid black;
+  border-radius: 12.5px;
+}
+
+.group-tasks-button {
+  width: 25px;
+  height: 25px;
+  background: url("/assets/addIcon.svg") center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: none;
+}
+
+.group-tasks-input {
+  width: 0;
+  height: 25px;
+  border: 0.1px;
+  border-radius: 12.5px;
+  transition: all 500ms ease-in-out;
+}
+
+.group-tasks-button.active ~ .group-tasks-input {
+  display: block;
+  width: 300px;
+  background-color: aqua;
+}
+
+.group-tasks-button:hover {
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import './ToDoItem.css';
 
-import { deleteTaskStorage, updateTaskInStorage } from '../../helpers/storage';
+import { updateTaskInGroupStorage, deleteTaskInGroupStorage } from '../../helpers/storage';
 
 export const ToDoItem = ({
   message,
@@ -54,13 +54,13 @@ export const ToDoItem = ({
 
   const handleCheckToDoElement = () => {
     taskState.completed = !taskState.completed;
-    updateTaskInStorage(taskState);
+    updateTaskInGroupStorage(taskState);
     checkmark.classList.toggle('grey-border');
   };
 
   const handleDeleteTaskButtonClick = () => {
     toDoItemElement.remove();
-    deleteTaskStorage(id);
+    deleteTaskInGroupStorage(taskState, id);
   };
 
   const handleClickOutsideTask = (e) => {
@@ -71,7 +71,7 @@ export const ToDoItem = ({
 
   taskMessage.addEventListener('blur', () => {
     taskState.message = taskMessage.innerText;
-    updateTaskInStorage(taskState);
+    updateTaskInGroupStorage(taskState);
     editTaskButton.classList.remove('black-button');
   });
   taskMessage.addEventListener('click', (e) => {
