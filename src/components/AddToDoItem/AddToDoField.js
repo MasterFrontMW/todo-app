@@ -29,7 +29,15 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
   const tasksList = document.querySelector('.tasks-list');
 
   function createTaskStorage(message) {
-    return { completed: false, groupId: '', id: Date.now().toString(), message };
+    return {
+      completed: false,
+      cratedAt: new Date().toDateString(),
+      endsAt: '',
+      groupId: '',
+      id: Date.now().toString(),
+      message,
+      updatedAt: '',
+    };
   }
 
   const handleAddToDoButtonClick = () => {
