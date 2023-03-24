@@ -1,9 +1,15 @@
 import './Accordion.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
-import { updateGroupofTasksDataInStorage } from '../../helpers/storage';
+import {
+  addTaskToGroupOfTaskToStorage,
+  getGroupOfTasksDataFromLocalStorage,
+} from '../../helpers/storage';
 
 export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   const accordionState = { id, taskGroupTitle, tasks };
+
+  const groupOfTasks = getGroupOfTasksDataFromLocalStorage();
+  const tasksQuantity = groupOfTasks.find((group) => group.id === id).tasks.length;
 
   const accordionWrapper = document.createElement('div');
   accordionWrapper.classList.add('accordion-wrapper');
@@ -12,17 +18,22 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   const accordionItem = document.createElement('div');
   accordionItem.classList.add('accordion-item');
 
+  const accordionHeaderContainer = document.createElement('div');
+  accordionHeaderContainer.classList.add('accordion-header-container');
+
+  const accordionFolderSign = document.createElement('div');
+  accordionFolderSign.classList.add('accordion-folder-sign');
+
   const accordionTitle = document.createElement('div');
   accordionTitle.classList.add('accordion-title');
   accordionTitle.innerText = taskGroupTitle;
 
-  const addToDoButton = document.createElement('div');
-  addToDoButton.classList.add('add-to-do-group-button');
-  addToDoButton.innerHTML = 'ADD TASK';
+  const accordionLine = document.createElement('div');
+  accordionLine.classList.add('accordion-line');
 
   const addToDoAccordionField = document.createElement('div');
   addToDoAccordionField.classList.add('add-to-do-accordion-field');
-  addToDoAccordionField.style.display = 'none';
+  addToDoAccordionField.style.display = 'flex';
 
   const addToDoAccordionFieldInput = document.createElement('input');
   addToDoAccordionFieldInput.classList.add('add-to-do-accordion-input');
@@ -32,8 +43,13 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   addToDoAccordionFieldAddButton.classList.add('add-to-do-accordion-button');
   addToDoAccordionFieldAddButton.innerHTML = 'add TASK';
 
-  const accordionPlusSign = document.createElement('div');
-  accordionPlusSign.classList.add('accordion-plus-sign');
+  const accordionExpandSign = document.createElement('div');
+  accordionExpandSign.classList.add('accordion-expand-sign');
+
+  const accordionTaskCounter = document.createElement('div');
+  accordionTaskCounter.classList.add('accordion-task-counter');
+  accordionTaskCounter.dataset.counterid = id;
+  accordionTaskCounter.innerText = tasksQuantity;
 
   const accordionItemContent = document.createElement('div');
   accordionItemContent.classList.add('accordion-content');
@@ -42,13 +58,8 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     accordionItemContent.appendChild(ToDoItem(task));
   });
 
-  const handleAddToDoButtonClick = () => {
-    addToDoButton.style.display = 'none';
-    addToDoAccordionField.style.display = 'flex';
-  };
-
   const handleAccordionCollapse = () => {
-    accordionPlusSign.classList.toggle('active');
+    accordionExpandSign.classList.toggle('active');
     accordionTitle.classList.toggle('active');
     if (accordionTitle.classList.contains('active')) {
       const accordionItemContentScroll = accordionItemContent.scrollHeight;
@@ -64,19 +75,14 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
 
   const handleAddToDoButtonActiveClick = () => {
     const taskToStorage = createTaskStorage(addToDoAccordionFieldInput.value);
-    accordionItemContent.appendChild(ToDoItem(taskToStorage));
-    accordionState.tasks.push(taskToStorage);
+    accordionItemContent.prepend(ToDoItem(taskToStorage));
+    addTaskToGroupOfTaskToStorage(taskToStorage);
+    const actualGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
+    const actualTasksQuantity = actualGroupOfTasks.find((group) => group.id === id).tasks.length;
+    accordionTaskCounter.innerText = actualTasksQuantity;
     addToDoAccordionFieldInput.value = '';
-    updateGroupofTasksDataInStorage(accordionState);
-    if (!accordionPlusSign.classList.contains('active')) {
-      accordionPlusSign.classList.toggle('active');
-    }
 
-    if (!accordionTitle.classList.contains('active')) {
-      accordionTitle.classList.toggle('active');
-    }
-
-    if (accordionPlusSign.classList.contains('active')) {
+    if (accordionExpandSign.classList.contains('active')) {
       const accordionItemContentScroll = accordionItemContent.scrollHeight;
       accordionItemContent.style.maxHeight = `${accordionItemContentScroll}px`;
     } else {
@@ -84,16 +90,19 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     }
   };
 
-  accordionPlusSign.addEventListener('click', handleAccordionCollapse);
-  addToDoButton.addEventListener('click', handleAddToDoButtonClick);
+  accordionExpandSign.addEventListener('click', handleAccordionCollapse);
   addToDoAccordionFieldAddButton.addEventListener('click', handleAddToDoButtonActiveClick);
 
   accordionWrapper.appendChild(accordionItem);
-  accordionItem.appendChild(accordionTitle);
+
+  accordionItem.appendChild(accordionHeaderContainer);
+  accordionHeaderContainer.appendChild(accordionFolderSign);
+  accordionHeaderContainer.appendChild(accordionTitle);
+  accordionHeaderContainer.appendChild(accordionLine);
+  accordionHeaderContainer.appendChild(accordionExpandSign);
+  accordionHeaderContainer.appendChild(accordionTaskCounter);
   accordionItem.appendChild(accordionItemContent);
-  accordionTitle.appendChild(addToDoButton);
-  accordionTitle.appendChild(addToDoAccordionField);
-  accordionTitle.appendChild(accordionPlusSign);
+  accordionItemContent.appendChild(addToDoAccordionField);
   addToDoAccordionField.appendChild(addToDoAccordionFieldInput);
   addToDoAccordionField.appendChild(addToDoAccordionFieldAddButton);
 

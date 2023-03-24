@@ -1,6 +1,6 @@
 import './AddToDoField.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
-import { addTaskToStorage } from '../../helpers/storage';
+// import { addTaskToStorage } from '../../helpers/storage';
 
 export const AddToDoField = () => {
   const addToDoField = document.createElement('div');
@@ -48,7 +48,7 @@ export const initializeAddToDoField = (addToDoSectionHTMLElement) => {
     }
     const todoTextMessage = addToDoInput.value;
     const taskInStorage = createTaskStorage(todoTextMessage);
-    addTaskToStorage(taskInStorage);
+    // addTaskToStorage(taskInStorage);
     tasksList.prepend(ToDoItem(taskInStorage));
     addToDoInput.value = '';
   };

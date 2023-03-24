@@ -5,6 +5,8 @@ import { addGroupOfTaskToStorage } from '../../helpers/storage';
 export const GroupTasksField = () => {
   const fieldState = { value: '' };
 
+  const toDoSection = document.querySelector('#todo-section');
+
   const groupTasksField = document.createElement('div');
   groupTasksField.classList.add('group-tasks-field');
   groupTasksField.id = 'group-tasks';
@@ -13,17 +15,17 @@ export const GroupTasksField = () => {
   groupTasksButtonActive.classList.add('group-tasks-button-text');
   groupTasksButtonActive.style.display = 'none';
   groupTasksButtonActive.disabled = true;
-  groupTasksButtonActive.innerHTML = `add task group`;
 
   const groupTasksButton = document.createElement('button');
   groupTasksButton.classList.add('group-tasks-button');
+  groupTasksButton.innerText = 'ADD GROUP OF TASKS';
 
   const groupTasksInput = document.createElement('input');
   groupTasksInput.classList.add('group-tasks-input');
 
   groupTasksField.appendChild(groupTasksButton);
-  groupTasksField.appendChild(groupTasksButtonActive);
   groupTasksField.appendChild(groupTasksInput);
+  groupTasksField.appendChild(groupTasksButtonActive);
 
   function createTasksGroupStorage(taskGroupTitle) {
     return { id: Date.now().toString(), taskGroupTitle, tasks: [] };
@@ -37,14 +39,11 @@ export const GroupTasksField = () => {
 
   const handleGroupTaskButtonActiveClick = () => {
     groupTasksButton.classList.toggle('active');
-    const groupTaskAccordion = document.createElement('div');
-    groupTaskAccordion.classList.add('group-task-accordion');
     const groupTitle = fieldState.value;
     const tasksGroup = createTasksGroupStorage(groupTitle);
     addGroupOfTaskToStorage(tasksGroup);
-    const accordionItem3 = Accordion(tasksGroup);
-    groupTaskAccordion.append(accordionItem3);
-    groupTasksField.after(groupTaskAccordion);
+    const accordionItem = Accordion(tasksGroup);
+    toDoSection.prepend(accordionItem);
     groupTasksInput.value = '';
     groupTasksButtonActive.style.display = 'none';
     groupTasksButtonActive.disabled = true;

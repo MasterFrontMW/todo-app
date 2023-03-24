@@ -4,36 +4,71 @@
 }
 
 .accordion-item {
-  border: 2px solid #333;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 4px;
   margin: 5px 0;
   padding: 2px 4px;
 }
 
-.accordion-title {
+.accordion-header-container {
   display: flex;
-  background-size: 100%;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+}
+
+.accordion-title {
+  padding: 0 4px;
   font-size: 14px;
   font-family: "Roboto Slab", serif;
 }
 
-.accordion-plus-sign {
+.accordion-folder-sign {
+  background-image: url("/assets/folderIcon.svg");
+  background-size: cover;
+  opacity: 0.5;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.accordion-line {
+  margin: 0 10px;
+  background-color: #0e0808;
+  height: 0.3px;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.accordion-expand-sign {
   background-image: url("/assets/expandIcon.svg");
   background-size: cover;
-  width: 25px;
+  flex-basis: 25px;
   height: 25px;
+  flex-shrink: 0;
   transition: 0.5s;
 }
 
-.accordion-plus-sign:hover {
+.accordion-expand-sign:hover {
   cursor: pointer;
 }
 
-.accordion-plus-sign.active {
+.accordion-expand-sign.active {
   transform: rotate(180deg);
   transition: 1s;
+}
+
+.accordion-task-counter {
+  display: flex;
+  margin-left: 4px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 20%;
+  border: 2px solid var(--color-light-grey);
+  align-items: center;
+  justify-content: center;
+  background-color: #696767;
 }
 
 .accordion-content {
@@ -76,7 +111,6 @@
   padding: 4px 10px;
   opacity: 0.8;
   margin-right: 20px;
-  border: 1px solid black;
 }
 
 .add-to-do-accordion-button {

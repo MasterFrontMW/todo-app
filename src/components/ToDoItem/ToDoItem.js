@@ -59,6 +59,8 @@ export const ToDoItem = ({
   };
 
   const handleDeleteTaskButtonClick = () => {
+    const taskCounter = document.querySelector(`[data-counterid = '${groupId}']`);
+    taskCounter.innerText -= 1;
     toDoItemElement.remove();
     deleteTaskInGroupStorage(taskState, id);
   };

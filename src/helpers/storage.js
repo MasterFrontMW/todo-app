@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
+// import { STORAGE_GROUP_OF_TASKS_KEY } from '../config/consts';
 import { STORAGE_TASK_KEY, STORAGE_GROUP_OF_TASKS_KEY } from '../config/consts';
 
 const saveDataInStorageForKey = (key, data) => {
@@ -69,14 +70,18 @@ export const addGroupOfTaskToStorage = (taskGroupTitle) => {
   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, newGroupOfTasks);
 };
 
-export const getTasksInGroupOfTasksDataFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem(STORAGE_GROUP_OF_TASKS_KEY)) || [];
-};
+// export const getTasksInGroupOfTasksDataFromLocalStorage = (task) => {
+//   // return JSON.parse(localStorage.getItem(STORAGE_GROUP_OF_TASKS_KEY)) || [];
+//   const allGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
+//   console.log(allGroupOfTasks);
+//   const currentGroup = allGroupOfTasks.find((group) => task.group === group.id);
+// };
 
-export const addTaskToGroupOfTaskToStorage = (taskTitle) => {
-  const currentTasksInGroupOfTasks = getTasksInGroupOfTasksDataFromLocalStorage();
-  const newGroupOfTasks = [...currentTasksInGroupOfTasks, taskTitle];
-  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, newGroupOfTasks);
+export const addTaskToGroupOfTaskToStorage = (task) => {
+  const allGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
+  const currentGroup = allGroupOfTasks.find((group) => task.groupId === group.id);
+  currentGroup.tasks.push(task);
+  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, allGroupOfTasks);
 };
 
 export const updateGroupofTasksDataInStorage = (tasksGroup) => {

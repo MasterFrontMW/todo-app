@@ -1,20 +1,32 @@
 .group-tasks-field {
   width: fit-content;
-  margin-top: 25px;
+  margin-bottom: 10px;
   display: flex;
+  margin-left: auto;
   justify-content: space-between;
   gap: 0;
-  border: 1px solid black;
+  border: none;
   border-radius: 12.5px;
 }
 
 .group-tasks-button {
-  width: 25px;
-  height: 25px;
-  background: url("/assets/addIcon.svg") center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background: var(--green-purple-linear-gradient);
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: auto;
   border: none;
+  border-radius: 12px;
+  padding: 4px 10px;
+  opacity: 0.8;
+}
+
+.group-tasks-button:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .group-tasks-input {
@@ -22,15 +34,21 @@
   height: 25px;
   border: 0.1px;
   border-radius: 12.5px;
-  transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in;
 }
 
 .group-tasks-button.active ~ .group-tasks-input {
+  padding: 0 10px;
   display: block;
   width: 300px;
-  background-color: aqua;
+  background-color: rgb(211, 202, 202);
 }
 
-.group-tasks-button:hover {
-  cursor: pointer;
+.group-tasks-button-text {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: url("/assets/addIcon.svg") center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
