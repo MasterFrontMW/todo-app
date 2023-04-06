@@ -29,7 +29,7 @@
   opacity: 1;
 }
 
-.group-tasks-input {
+.group-tasks-input-active {
   width: 0;
   height: 25px;
   border: 0.1px;
@@ -37,7 +37,7 @@
   transition: all 500ms ease-in;
 }
 
-.group-tasks-button.active ~ .group-tasks-input {
+.group-tasks-button.active ~ .group-tasks-input-active {
   padding: 0 10px;
   display: block;
   width: 300px;

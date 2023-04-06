@@ -1,6 +1,6 @@
 import './GroupTasksField.css';
 import { Accordion } from '../Accordion/Accordion';
-import { addGroupOfTaskToStorage } from '../../helpers/storage';
+import { addGroupOfTaskInStorage } from '../../helpers/storage';
 
 export const GroupTasksField = () => {
   const fieldState = { value: '' };
@@ -21,7 +21,7 @@ export const GroupTasksField = () => {
   groupTasksButton.innerText = 'ADD GROUP OF TASKS';
 
   const groupTasksInput = document.createElement('input');
-  groupTasksInput.classList.add('group-tasks-input');
+  groupTasksInput.classList.add('group-tasks-input-active');
 
   groupTasksField.appendChild(groupTasksButton);
   groupTasksField.appendChild(groupTasksInput);
@@ -41,7 +41,7 @@ export const GroupTasksField = () => {
     groupTasksButton.classList.toggle('active');
     const groupTitle = fieldState.value;
     const tasksGroup = createTasksGroupStorage(groupTitle);
-    addGroupOfTaskToStorage(tasksGroup);
+    addGroupOfTaskInStorage(tasksGroup);
     const accordionItem = Accordion(tasksGroup);
     toDoSection.prepend(accordionItem);
     groupTasksInput.value = '';

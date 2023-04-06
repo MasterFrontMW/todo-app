@@ -14,7 +14,17 @@
 .accordion-header-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+}
+
+.accordion-navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.accordion-navbar-container:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .accordion-title {
@@ -59,9 +69,23 @@
   transition: 1s;
 }
 
+.accordion-delete-sign {
+  background-image: url("/assets/trashBinIcon.svg");
+  background-size: cover;
+  margin-left: 4px;
+  flex-basis: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.accordion-delete-sign:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .accordion-task-counter {
   display: flex;
-  margin-left: 4px;
   min-width: 20px;
   height: 20px;
   border-radius: 20%;

@@ -1,8 +1,9 @@
 import './Accordion.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
 import {
-  addTaskToGroupOfTaskToStorage,
+  addTaskInGroupStorage,
   getGroupOfTasksDataFromLocalStorage,
+  deleteGroupOfTasksInStorage,
 } from '../../helpers/storage';
 
 export const Accordion = ({ id, taskGroupTitle, tasks }) => {
@@ -20,6 +21,9 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
 
   const accordionHeaderContainer = document.createElement('div');
   accordionHeaderContainer.classList.add('accordion-header-container');
+
+  const accordionNavbarContainer = document.createElement('div');
+  accordionNavbarContainer.classList.add('accordion-navbar-container');
 
   const accordionFolderSign = document.createElement('div');
   accordionFolderSign.classList.add('accordion-folder-sign');
@@ -46,6 +50,9 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   const accordionExpandSign = document.createElement('div');
   accordionExpandSign.classList.add('accordion-expand-sign');
 
+  const accordionDeleteSign = document.createElement('div');
+  accordionDeleteSign.classList.add('accordion-delete-sign');
+
   const accordionTaskCounter = document.createElement('div');
   accordionTaskCounter.classList.add('accordion-task-counter');
   accordionTaskCounter.dataset.counterid = id;
@@ -55,7 +62,7 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   accordionItemContent.classList.add('accordion-content');
 
   tasks.forEach((task) => {
-    accordionItemContent.appendChild(ToDoItem(task));
+    accordionItemContent.prepend(ToDoItem(task));
   });
 
   const handleAccordionCollapse = () => {
@@ -76,7 +83,7 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   const handleAddToDoButtonActiveClick = () => {
     const taskToStorage = createTaskStorage(addToDoAccordionFieldInput.value);
     accordionItemContent.prepend(ToDoItem(taskToStorage));
-    addTaskToGroupOfTaskToStorage(taskToStorage);
+    addTaskInGroupStorage(taskToStorage);
     const actualGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
     const actualTasksQuantity = actualGroupOfTasks.find((group) => group.id === id).tasks.length;
     accordionTaskCounter.innerText = actualTasksQuantity;
@@ -90,17 +97,23 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     }
   };
 
-  accordionExpandSign.addEventListener('click', handleAccordionCollapse);
+  accordionNavbarContainer.addEventListener('click', handleAccordionCollapse);
   addToDoAccordionFieldAddButton.addEventListener('click', handleAddToDoButtonActiveClick);
+  accordionDeleteSign.addEventListener('click', () => {
+    accordionWrapper.remove();
+    deleteGroupOfTasksInStorage(id);
+  });
 
   accordionWrapper.appendChild(accordionItem);
 
   accordionItem.appendChild(accordionHeaderContainer);
-  accordionHeaderContainer.appendChild(accordionFolderSign);
-  accordionHeaderContainer.appendChild(accordionTitle);
-  accordionHeaderContainer.appendChild(accordionLine);
-  accordionHeaderContainer.appendChild(accordionExpandSign);
+  accordionNavbarContainer.appendChild(accordionFolderSign);
+  accordionNavbarContainer.appendChild(accordionTitle);
+  accordionNavbarContainer.appendChild(accordionLine);
+  accordionNavbarContainer.appendChild(accordionExpandSign);
+  accordionHeaderContainer.appendChild(accordionNavbarContainer);
   accordionHeaderContainer.appendChild(accordionTaskCounter);
+  accordionHeaderContainer.appendChild(accordionDeleteSign);
   accordionItem.appendChild(accordionItemContent);
   accordionItemContent.appendChild(addToDoAccordionField);
   addToDoAccordionField.appendChild(addToDoAccordionFieldInput);
