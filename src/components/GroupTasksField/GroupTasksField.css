@@ -4,7 +4,6 @@
   display: flex;
   margin-left: auto;
   justify-content: space-between;
-  gap: 0;
   border: none;
   border-radius: 12.5px;
 }
@@ -32,23 +31,32 @@
 .group-tasks-input-active {
   width: 0;
   height: 25px;
-  border: 0.1px;
+  border: none;
   border-radius: 12.5px;
-  transition: all 500ms ease-in;
 }
 
 .group-tasks-button.active ~ .group-tasks-input-active {
+  margin-right: -25px;
   padding: 0 10px;
   display: block;
   width: 300px;
-  background-color: rgb(211, 202, 202);
+  outline: none;
+  background-color: var(--todo-page-background);
+  transition: all 500ms ease-out;
 }
 
-.group-tasks-button-text {
+.group-tasks-button-add {
+  right: 25px;
   width: 25px;
   height: 25px;
+  border: solid 1.5px rgb(162, 159, 159);
   border-radius: 50%;
   background: url("/assets/addIcon.svg") center;
+  background-color: var(--todo-app-background);
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+.group-tasks-button-add:hover {
+  cursor: pointer;
 }

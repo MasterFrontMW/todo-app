@@ -41,7 +41,7 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
 
   const addToDoAccordionFieldInput = document.createElement('input');
   addToDoAccordionFieldInput.classList.add('add-to-do-accordion-input');
-  addToDoAccordionFieldInput.placeholder = 'Add new task to this group';
+  addToDoAccordionFieldInput.placeholder = 'Write new task...';
 
   const addToDoAccordionFieldAddButton = document.createElement('div');
   addToDoAccordionFieldAddButton.classList.add('add-to-do-accordion-button');
@@ -81,6 +81,11 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   }
 
   const handleAddToDoButtonActiveClick = () => {
+    if (!addToDoAccordionFieldInput.value.trim()) {
+      alert('Please insert the task');
+      addToDoAccordionFieldInput.value = '';
+      return;
+    }
     const taskToStorage = createTaskStorage(addToDoAccordionFieldInput.value);
     accordionItemContent.prepend(ToDoItem(taskToStorage));
     addTaskInGroupStorage(taskToStorage);
@@ -105,16 +110,15 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   });
 
   accordionWrapper.appendChild(accordionItem);
-
   accordionItem.appendChild(accordionHeaderContainer);
+  accordionItem.appendChild(accordionItemContent);
+  accordionHeaderContainer.appendChild(accordionNavbarContainer);
+  accordionHeaderContainer.appendChild(accordionTaskCounter);
+  accordionHeaderContainer.appendChild(accordionDeleteSign);
   accordionNavbarContainer.appendChild(accordionFolderSign);
   accordionNavbarContainer.appendChild(accordionTitle);
   accordionNavbarContainer.appendChild(accordionLine);
   accordionNavbarContainer.appendChild(accordionExpandSign);
-  accordionHeaderContainer.appendChild(accordionNavbarContainer);
-  accordionHeaderContainer.appendChild(accordionTaskCounter);
-  accordionHeaderContainer.appendChild(accordionDeleteSign);
-  accordionItem.appendChild(accordionItemContent);
   accordionItemContent.appendChild(addToDoAccordionField);
   addToDoAccordionField.appendChild(addToDoAccordionFieldInput);
   addToDoAccordionField.appendChild(addToDoAccordionFieldAddButton);

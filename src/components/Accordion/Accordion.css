@@ -29,17 +29,16 @@
 
 .accordion-title {
   padding: 0 4px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: "Roboto Slab", serif;
 }
 
 .accordion-folder-sign {
-  background-image: url("/assets/folderIcon.svg");
+  content: url("/assets/documentIcon.svg");
   background-size: cover;
-  opacity: 0.5;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 14px;
   margin-right: 5px;
 }
 
@@ -52,11 +51,9 @@
 }
 
 .accordion-expand-sign {
-  background-image: url("/assets/expandIcon.svg");
-  background-size: cover;
-  flex-basis: 25px;
-  height: 25px;
-  flex-shrink: 0;
+  content: url("/assets/arrowIcon.svg");
+  width: 8.5px;
+  height: 5.6px;
   transition: 0.5s;
 }
 
@@ -70,11 +67,11 @@
 }
 
 .accordion-delete-sign {
-  background-image: url("/assets/trashBinIcon.svg");
+  content: url("/assets/trashBinIcon.svg");
   background-size: cover;
-  margin-left: 4px;
-  flex-basis: 20px;
-  height: 20px;
+  margin-left: 3px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   opacity: 0.8;
 }
@@ -85,14 +82,19 @@
 }
 
 .accordion-task-counter {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 11.2px;
+  color: var(--todo-app-background);
+  margin-left: 4px;
   display: flex;
   min-width: 20px;
   height: 20px;
-  border-radius: 20%;
-  border: 2px solid var(--color-light-grey);
+  border-radius: 6px;
   align-items: center;
   justify-content: center;
-  background-color: #696767;
+  flex-shrink: 0;
+  background-color: #413f3f;
 }
 
 .accordion-content {
@@ -107,47 +109,39 @@
   max-height: 30px;
 }
 
-.add-to-do-group-button {
-  background: var(--green-purple-linear-gradient);
-  color: var(--color-white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  line-height: 16px;
-  margin-left: auto;
-  border-radius: 12px;
-  padding: 4px 10px;
-  opacity: 0.8;
-  margin-right: 20px;
-  border: 1px solid grey;
-}
-
 .add-to-do-accordion-field {
   color: var(--color-white);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  line-height: 16px;
-  margin-left: auto;
-  border-radius: 6px;
   padding: 4px 10px;
   opacity: 0.8;
   margin-right: 20px;
 }
 
+.add-to-do-accordion-input {
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 12px;
+  background-color: var(--todo-app-background);
+  outline: none;
+  padding: 3px 10px;
+}
+
 .add-to-do-accordion-button {
-  background: #6ba84f;
+  background: #b4bbb1;
+  width: 85px;
   color: #0e0808;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
   line-height: 16px;
-  margin-left: 5px;
+  margin-left: -85px;
+  border: 1px solid black;
   border-radius: 12px;
-  padding: 4px 10px;
+  padding: 3px 10px;
   opacity: 0.8;
 }
 

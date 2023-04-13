@@ -12,7 +12,7 @@ export const GroupTasksField = () => {
   groupTasksField.id = 'group-tasks';
 
   const groupTasksButtonActive = document.createElement('button');
-  groupTasksButtonActive.classList.add('group-tasks-button-text');
+  groupTasksButtonActive.classList.add('group-tasks-button-add');
   groupTasksButtonActive.style.display = 'none';
   groupTasksButtonActive.disabled = true;
 
@@ -22,6 +22,7 @@ export const GroupTasksField = () => {
 
   const groupTasksInput = document.createElement('input');
   groupTasksInput.classList.add('group-tasks-input-active');
+  groupTasksInput.placeholder = 'Write new Group...';
 
   groupTasksField.appendChild(groupTasksButton);
   groupTasksField.appendChild(groupTasksInput);
