@@ -6,6 +6,7 @@
 
 /* font sans serif */
 @import url("https://fonts.googleapis.com/css2?\=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400;1,600");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 body {
   width: 100vw;
@@ -25,7 +26,7 @@ body {
 
 .app-container::before {
   position: absolute;
-  top: 0;
+  top: -15px;
   left: 0;
   width: 100%;
   content: "";

@@ -1,36 +1,62 @@
 .group-tasks-field {
   width: fit-content;
-  margin-top: 25px;
+  margin-bottom: 10px;
   display: flex;
+  margin-left: auto;
   justify-content: space-between;
-  gap: 0;
-  border: 1px solid black;
+  border: none;
   border-radius: 12.5px;
 }
 
 .group-tasks-button {
-  width: 25px;
-  height: 25px;
-  background: url("/assets/addIcon.svg") center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background: var(--green-purple-linear-gradient);
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: auto;
   border: none;
-}
-
-.group-tasks-input {
-  width: 0;
-  height: 25px;
-  border: 0.1px;
-  border-radius: 12.5px;
-  transition: all 500ms ease-in-out;
-}
-
-.group-tasks-button.active ~ .group-tasks-input {
-  display: block;
-  width: 300px;
-  background-color: aqua;
+  border-radius: 12px;
+  padding: 4px 10px;
+  opacity: 0.8;
 }
 
 .group-tasks-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.group-tasks-input-active {
+  width: 0;
+  height: 25px;
+  border: none;
+  border-radius: 12.5px;
+}
+
+.group-tasks-button.active ~ .group-tasks-input-active {
+  margin-right: -25px;
+  padding: 0 10px;
+  display: block;
+  width: 300px;
+  outline: none;
+  background-color: var(--todo-page-background);
+  transition: all 500ms ease-out;
+}
+
+.group-tasks-button-add {
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  border: solid 1.5px rgb(162, 159, 159);
+  border-radius: 50%;
+  background: url("/assets/addIcon.svg") center;
+  background-color: var(--todo-app-background);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.group-tasks-button-add:hover {
   cursor: pointer;
 }
