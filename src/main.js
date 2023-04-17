@@ -43,7 +43,6 @@ export const renderTasks = () => {
 
 const initializeFrontendApp = () => {
   renderGroups();
-  // renderTasks();
   pageTitle.innerHTML = Title();
   addToDoSection.append(AddToDoField());
   addToDoSection.append(GroupTasksField());

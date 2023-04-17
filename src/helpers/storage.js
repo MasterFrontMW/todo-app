@@ -1,5 +1,4 @@
 // eslint-disable-next-line import/prefer-default-export
-// import { STORAGE_GROUP_OF_TASKS_KEY } from '../config/consts';
 import { STORAGE_TASK_KEY, STORAGE_GROUP_OF_TASKS_KEY } from '../config/consts';
 
 const saveDataInStorageForKey = (key, data) => {
