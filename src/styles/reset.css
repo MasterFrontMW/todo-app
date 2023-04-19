@@ -36,3 +36,12 @@ picture {
   max-width: 100%;
   display: block;
 }
+
+button {
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}

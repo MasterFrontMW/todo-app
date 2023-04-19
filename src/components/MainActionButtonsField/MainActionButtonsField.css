@@ -1,0 +1,78 @@
+.action-buttons-field {
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  border-top: 1px solid var(--color-light-grey);
+  width: 100%;
+  margin: var(--spacing-m) 0 var(--spacing-l);
+}
+
+.action-buttons-field::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background-image: url("/assets/penIcon.svg");
+}
+
+.action-buttons-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.action-buttons-input::placeholder {
+  color: var(--color-medium-dark-grey);
+}
+
+.action-buttons-input:focus::placeholder {
+  color: var(--color-dark-grey);
+}
+
+.action-buttons-input-wrapper {
+  width: 250px;
+  margin-left: var(--spacing-s);
+}
+
+.action-buttons-input-wrapper::after {
+  content: "";
+  height: 1px;
+  background: #959595a3;
+  width: 0;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+.action-buttons-input-wrapper:has(input:focus)::after {
+  width: 100%;
+}
+
+.action-buttons-field button {
+  background: var(--color-light-grey);
+  width: 85px;
+  color: #0e0808;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  padding: 3px 10px;
+  margin-left: var(--spacing-m);
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.action-buttons-field button:first-of-type {
+  margin-left: auto;
+}
+
+button.active {
+  background: var(--color-dark-grey);
+  color: white;
+}
+
+.action-buttons-field button:hover {
+  opacity: 0.8;
+}
