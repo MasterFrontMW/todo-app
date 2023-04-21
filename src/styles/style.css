@@ -26,12 +26,13 @@ body {
 
 .app-container::before {
   position: absolute;
-  top: -15px;
+  top: 0;
   left: 0;
   width: 100%;
   content: "";
   background: var(--todo-header-logo-color);
-  height: var(--todo-header-logo-height);
+  height: 50px;
+  clip-path: ellipse(62% 25% at 50% 1%);
 }
 
 #accordion {
@@ -44,9 +45,31 @@ body {
 }
 
 #todo-section {
-  display: inline-block;
   width: 100%;
   min-height: 50px;
-  padding: 0 30px;
-  border: 1px solid black;
+  padding: var(--spacing-xl) var(--spacing-l) var(--spacing-l);
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+.font-smaller {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.font-small {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.font-medium-small {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.font-medium {
+  font-size: 16px;
+  line-height: 18px;
 }

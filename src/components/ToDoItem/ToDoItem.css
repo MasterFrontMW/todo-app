@@ -1,6 +1,6 @@
 .to-do-element-wrapper {
   width: 100%;
-  height: 50px;
+  height: fit-content;
   display: flex;
   align-items: center;
 }

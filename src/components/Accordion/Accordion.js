@@ -43,7 +43,10 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   addToDoAccordionFieldInput.classList.add('add-to-do-accordion-input');
   addToDoAccordionFieldInput.placeholder = 'Write new task...';
 
-  const addToDoAccordionFieldAddButton = document.createElement('div');
+  const addToDoAccordionFieldInputWrapper = document.createElement('div');
+  addToDoAccordionFieldInputWrapper.classList.add('add-to-do-accordion-input-wrapper');
+
+  const addToDoAccordionFieldAddButton = document.createElement('button');
   addToDoAccordionFieldAddButton.classList.add('add-to-do-accordion-button');
   addToDoAccordionFieldAddButton.innerHTML = 'add TASK';
 
@@ -65,12 +68,11 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     accordionItemContent.prepend(ToDoItem(task));
   });
 
-  const handleAccordionCollapse = () => {
-    accordionExpandSign.classList.toggle('active');
-    accordionTitle.classList.toggle('active');
-    if (accordionTitle.classList.contains('active')) {
-      const accordionItemContentScroll = accordionItemContent.scrollHeight;
-      accordionItemContent.style.maxHeight = `${accordionItemContentScroll}px`;
+  const handleAccordionExpand = () => {
+    accordionItem.classList.toggle('active');
+    if (accordionItem.classList.contains('active')) {
+      const expandedHeight = accordionItemContent.scrollHeight;
+      accordionItemContent.style.maxHeight = `${expandedHeight}px`;
     } else {
       accordionItemContent.style.maxHeight = 0;
     }
@@ -82,7 +84,7 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
 
   const handleAddToDoButtonActiveClick = () => {
     if (!addToDoAccordionFieldInput.value.trim()) {
-      alert('Please insert the task');
+      addToDoAccordionFieldInput.focus();
       addToDoAccordionFieldInput.value = '';
       return;
     }
@@ -94,15 +96,15 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     accordionTaskCounter.innerText = actualTasksQuantity;
     addToDoAccordionFieldInput.value = '';
 
-    if (accordionExpandSign.classList.contains('active')) {
-      const accordionItemContentScroll = accordionItemContent.scrollHeight;
-      accordionItemContent.style.maxHeight = `${accordionItemContentScroll}px`;
+    if (accordionItem.classList.contains('active')) {
+      const newExpandedHeight = accordionItemContent.scrollHeight;
+      accordionItemContent.style.maxHeight = `${newExpandedHeight}px`;
     } else {
       accordionItemContent.style.maxHeight = 0;
     }
   };
 
-  accordionNavbarContainer.addEventListener('click', handleAccordionCollapse);
+  accordionNavbarContainer.addEventListener('click', handleAccordionExpand);
   addToDoAccordionFieldAddButton.addEventListener('click', handleAddToDoButtonActiveClick);
   accordionDeleteSign.addEventListener('click', () => {
     accordionWrapper.remove();
@@ -120,7 +122,8 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
   accordionNavbarContainer.appendChild(accordionLine);
   accordionNavbarContainer.appendChild(accordionExpandSign);
   accordionItemContent.appendChild(addToDoAccordionField);
-  addToDoAccordionField.appendChild(addToDoAccordionFieldInput);
+  addToDoAccordionFieldInputWrapper.appendChild(addToDoAccordionFieldInput);
+  addToDoAccordionField.appendChild(addToDoAccordionFieldInputWrapper);
   addToDoAccordionField.appendChild(addToDoAccordionFieldAddButton);
 
   return accordionWrapper;

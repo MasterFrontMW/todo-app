@@ -7,8 +7,6 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
-  margin: 5px 0;
-  padding: 2px 4px;
 }
 
 .accordion-header-container {
@@ -34,11 +32,11 @@
 }
 
 .accordion-folder-sign {
-  content: url("/assets/documentIcon.svg");
+  background-image: url("/assets/documentIcon.svg");
   background-size: cover;
   flex-shrink: 0;
-  width: 18px;
-  height: 14px;
+  width: 24px;
+  height: 18px;
   margin-right: 5px;
 }
 
@@ -61,7 +59,7 @@
   cursor: pointer;
 }
 
-.accordion-expand-sign.active {
+.active .accordion-expand-sign {
   transform: rotate(180deg);
   transition: 1s;
 }
@@ -101,53 +99,84 @@
   overflow: hidden;
   justify-content: center;
   max-height: 0;
+  height: auto;
   font-size: 12px;
+  flex-direction: column;
   transition: max-height 0.5s ease-out;
 }
 
-.accordion-title.active + .accordion-content {
-  max-height: 30px;
+.accordion-content > * {
+  margin: var(--spacing-m) 0;
 }
 
 .add-to-do-accordion-field {
   color: var(--color-white);
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 14px;
-  padding: 4px 10px;
-  opacity: 0.8;
-  margin-right: 20px;
+}
+
+.add-to-do-accordion-field::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background-image: url("/assets/penIcon.svg");
+  margin-left: var(--spacing-xl);
 }
 
 .add-to-do-accordion-input {
-  width: 300px;
-  border: 1px solid black;
-  border-radius: 12px;
-  background-color: var(--todo-app-background);
+  width: 100%;
+  border: none;
+  background: transparent;
   outline: none;
-  padding: 3px 10px;
+}
+
+.add-to-do-accordion-input::placeholder {
+  color: var(--color-medium-dark-grey);
+}
+
+.add-to-do-accordion-input:focus::placeholder {
+  color: var(--color-dark-grey);
+}
+
+.add-to-do-accordion-input-wrapper {
+  width: 300px;
+  margin-left: var(--spacing-s);
+}
+
+.add-to-do-accordion-input-wrapper::after {
+  content: "";
+  height: 1px;
+  background: #959595a3;
+  width: 0;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+.add-to-do-accordion-input-wrapper:has(input:focus)::after {
+  width: 300px;
 }
 
 .add-to-do-accordion-button {
-  background: #b4bbb1;
+  background: var(--color-light-grey);
   width: 85px;
   color: #0e0808;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
-  line-height: 16px;
-  margin-left: -85px;
-  border: 1px solid black;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 3px 10px;
-  opacity: 0.8;
+  margin-left: auto;
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.add-to-do-accordion-input-wrapper:has(:is(input:focus, input:not(:placeholder-shown))) + button {
+  background: var(--color-dark-grey);
+  color: white;
 }
 
 .add-to-do-accordion-button:hover {
-  cursor: pointer;
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .add-to-do-group-button:hover {
