@@ -28,6 +28,7 @@
 .accordion-title {
   padding: 0 4px;
   font-size: 15px;
+  color: var(--secondary-color-3);
   font-family: "Roboto Slab", serif;
 }
 
@@ -42,7 +43,7 @@
 
 .accordion-line {
   margin: 0 10px;
-  background-color: #0e0808;
+  background-color: var(--secondary-color-3);
   height: 0.3px;
   width: 100%;
   opacity: 0.5;
@@ -83,7 +84,7 @@
   font-family: Inter, sans-serif;
   font-weight: 600;
   font-size: 11.2px;
-  color: var(--todo-app-background);
+  color: var(--primary-color-1);
   margin-left: 4px;
   display: flex;
   min-width: 20px;
@@ -92,7 +93,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background-color: #413f3f;
+  background-color: var(--primary-color-3);
 }
 
 .accordion-content {
@@ -110,7 +111,6 @@
 }
 
 .add-to-do-accordion-field {
-  color: var(--color-white);
   display: flex;
   align-items: center;
 }
@@ -132,11 +132,11 @@
 }
 
 .add-to-do-accordion-input::placeholder {
-  color: var(--color-medium-dark-grey);
+  color: var(--secondary-color-2);
 }
 
 .add-to-do-accordion-input:focus::placeholder {
-  color: var(--color-dark-grey);
+  color: var(--primary-color-3);
 }
 
 .add-to-do-accordion-input-wrapper {
@@ -146,8 +146,8 @@
 
 .add-to-do-accordion-input-wrapper::after {
   content: "";
-  height: 1px;
-  background: #959595a3;
+  height: 0.5px;
+  background: var(--secondary-color-3);
   width: 0;
   display: block;
   transition: all 0.3s ease-in-out;
@@ -158,9 +158,9 @@
 }
 
 .add-to-do-accordion-button {
-  background: var(--color-light-grey);
+  background: var(--primary-color-4);
   width: 85px;
-  color: #0e0808;
+  color: var(--secondary-color-3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,8 +171,8 @@
 }
 
 .add-to-do-accordion-input-wrapper:has(:is(input:focus, input:not(:placeholder-shown))) + button {
-  background: var(--color-dark-grey);
-  color: white;
+  background: var(--primary-color-3);
+  color: var(--primary-color-1);
 }
 
 .add-to-do-accordion-button:hover {

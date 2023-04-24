@@ -1,9 +1,13 @@
 :root {
   /* colors */
-  --color-light-grey: #e2e2e2;
-  --color-medium-dark-grey: #b0b0b0;
-  --color-dark-grey: #413f3f;
-  --color-white: #fff;
+  --primary-color-1: #f9f7f3;
+  --primary-color-2: #80a4ed;
+  --primary-color-3: #3d3b30;
+  --primary-color-4: #d8e2dc;
+  --secondary-color-1: #a18276;
+  --secondary-color-2: #7c7c7c;
+  --secondary-color-3: #0f0f0f;
+  --shadow-color-1: #1c1421;
 
   /* container */
   --todo-page-background: #e5e5e5;
@@ -15,7 +19,7 @@
   --todo-title-height: 30px;
 
   /* shadows */
-  --todo-app-shadow: 15px 11px 53px rgba(0, 0, 0, 0.2);
+  --todo-app-shadow: 15px 11px 53px #0a0a0a33;
   --title-drop-shadow: drop-shadow(0 0 25px rgba(1, 139, 86, 0.62));
 
   /* gradients */
@@ -24,6 +28,10 @@
 
   /* checkbox */
   --todo-checkbox-active: #ff4545;
+
+  /* task counter */
+  --todo-task-counter-color: var(--color-light-grey);
+  --todo-task-counter-background-color: var(--color-dark-grey);
 
   /* ToDoItem */
   --todoItem-height: 50px;
@@ -39,4 +47,17 @@
   --spacing-l: 24px;
   --spacing-xl: 32px;
   --spacing-xxl: 40px;
+}
+
+.dark {
+  --primary-color-1: #514e4a;
+  --primary-color-4: #21232b;
+  --primary-color-3: #909391;
+  --secondary-color-3: #cac8c8;
+  --secondary-color-2: #0f0f0f;
+  --shadow-color-1: #1c1421;
+}
+
+.light {
+  --todo-page-background: #f4f4f4;
 }

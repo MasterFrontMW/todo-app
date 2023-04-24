@@ -26,11 +26,11 @@
 }
 
 .action-buttons-input::placeholder {
-  color: var(--color-medium-dark-grey);
+  color: var(--secondary-color-2);
 }
 
 .action-buttons-input:focus::placeholder {
-  color: var(--color-dark-grey);
+  color: var(--primary-color-3);
 }
 
 .action-buttons-input-wrapper {
@@ -40,8 +40,8 @@
 
 .action-buttons-input-wrapper::after {
   content: "";
-  height: 1px;
-  background: #959595a3;
+  height: 0.5px;
+  background: var(--primary-color-3);
   width: 0;
   display: block;
   transition: all 0.3s ease-in-out;
@@ -52,9 +52,9 @@
 }
 
 .action-buttons-field button {
-  background: var(--color-light-grey);
+  background: var(--primary-color-4);
   width: 85px;
-  color: #0e0808;
+  color: var(--secondary-color-3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,8 +69,8 @@
 }
 
 button.active {
-  background: var(--color-dark-grey);
-  color: white;
+  background: var(--primary-color-3);
+  color: var(--primary-color-1);
 }
 
 .action-buttons-field button:hover {

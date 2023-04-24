@@ -10,9 +10,9 @@ export const initializeThemeMode = () => {
   const themeModeContainer = document.createElement('div');
   themeModeContainer.classList.add('theme-mode-container');
 
-  const themeModeButton = document.createElement('div');
-  themeModeButton.classList.add('theme-mode-button-wrapper');
-  themeModeButton.innerHTML = ThemeMode();
+  const themeModeButtonWrapper = document.createElement('div');
+  themeModeButtonWrapper.classList.add('theme-mode-button-wrapper');
+  themeModeButtonWrapper.innerHTML = ThemeMode();
 
   const themeModeList = document.createElement('ul');
   themeModeList.classList.add('theme-mode-list');
@@ -25,41 +25,20 @@ export const initializeThemeMode = () => {
   darkMode.classList.add('dark-mode');
   darkMode.innerText = 'Dark Mode';
 
-  themeModeContainer.appendChild(themeModeButton);
+  themeModeButtonWrapper.addEventListener('click', () => themeModeList.classList.toggle('active'));
+  lightMode.addEventListener('click', () => {
+    document.body.classList.add('light');
+    document.body.classList.remove('dark');
+  });
+  darkMode.addEventListener('click', () => {
+    document.body.classList.add('dark');
+    document.body.classList.remove('light');
+  });
+
+  themeModeContainer.appendChild(themeModeButtonWrapper);
   themeModeContainer.appendChild(themeModeList);
   themeModeList.appendChild(lightMode);
   themeModeList.appendChild(darkMode);
 
   return themeModeContainer;
-
-  // const themeModesDropdown = document.createElement('ul');
-  // themeModesDropdown.classList.add('theme-modes-dropdown');
-  // themeModeContainer.appendChild(themeModesDropdown);
-
-  // const handleThemeModeButtonClick = () => {
-  //   console.log('dfas');
-  //   themeModesDropdown.style.display = 'block';
-  // };
-
-  // const lightMode = document.createElement('li');
-  // lightMode.classList.add('dropdown');
-
-  // const lightModeLink = document.createElement('a');
-  // lightModeLink.setAttribute('id', 'light');
-  // lightModeLink.setAttribute('href', '#');
-  // lightModeLink.innerText = 'Light Mode';
-  // lightMode.appendChild(lightModeLink);
-
-  // const darkMode = document.createElement('li');
-  // darkMode.classList.add('dropdown');
-
-  // const darkModeLink = document.createElement('a');
-  // darkModeLink.setAttribute('id', 'dark');
-  // // darkModeLink.setAttribute('href', '#');
-  // darkModeLink.innerText = 'Dark Mode';
-  // darkMode.appendChild(darkModeLink);
-
-  // themeModesDropdown.appendChild(lightMode);
-  // themeModesDropdown.appendChild(darkMode);
-  // themeModeButton.addEventListener('click', handleThemeModeButtonClick);
 };
