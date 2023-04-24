@@ -48,7 +48,7 @@ body {
   width: 100%;
   min-height: 50px;
   padding: var(--spacing-xl) var(--spacing-l) var(--spacing-l);
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-l);

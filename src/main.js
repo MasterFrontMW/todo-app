@@ -1,6 +1,8 @@
 /* eslint-disable */
 import { Title } from './components/Title/Title';
 
+import { initializeThemeMode } from './components/ThemeMode/ThemeMode';
+
 import { Accordion } from './components/Accordion/Accordion';
 
 import {
@@ -13,6 +15,7 @@ import { MainActionButtonsField } from './components/MainActionButtonsField/Main
 
 // selectors
 const pageTitle = document.querySelector('#title');
+const themeModeSection = document.querySelector('#theme-mode')
 const addToDoSection = document.querySelector('#todo-section');
 
 // load data from local storage and render tasks
@@ -33,6 +36,7 @@ const initializeFrontendApp = () => {
   renderGroups();
   renderTasks();
   pageTitle.innerHTML = Title();
+  themeModeSection.append(initializeThemeMode());
   addToDoSection.append(MainActionButtonsField());
 };
 
