@@ -104,12 +104,21 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     }
   };
 
+  const activateButtons = () => {
+    addToDoAccordionFieldInputWrapper.classList.add('active');
+  };
+  const resetActiveButtons = () => {
+    addToDoAccordionFieldInputWrapper.classList.remove('active');
+  };
+
   accordionNavbarContainer.addEventListener('click', handleAccordionExpand);
   addToDoAccordionFieldAddButton.addEventListener('click', handleAddToDoButtonActiveClick);
   accordionDeleteSign.addEventListener('click', () => {
     accordionWrapper.remove();
     deleteGroupOfTasksInStorage(id);
   });
+  addToDoAccordionFieldInput.addEventListener('focusin', () => activateButtons());
+  addToDoAccordionFieldInput.addEventListener('focusout', () => resetActiveButtons());
 
   accordionWrapper.appendChild(accordionItem);
   accordionItem.appendChild(accordionHeaderContainer);

@@ -27,11 +27,13 @@
 }
 
 .action-buttons-input::placeholder {
-  color: var(--secondary-color-2);
+  color: var(--secondary-color-3);
+  opacity: 0.6;
 }
 
 .action-buttons-input:focus::placeholder {
   color: var(--primary-color-3);
+  opacity: 1;
 }
 
 .action-buttons-input-wrapper {
@@ -41,14 +43,14 @@
 
 .action-buttons-input-wrapper::after {
   content: "";
-  height: 0.5px;
+  height: 1px;
   background: var(--primary-color-3);
   width: 0;
   display: block;
   transition: all 0.3s ease-in-out;
 }
 
-.action-buttons-input-wrapper:has(input:focus)::after {
+.active.action-buttons-input-wrapper::after {
   width: 100%;
 }
 

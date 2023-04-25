@@ -28,13 +28,15 @@
 .accordion-title {
   padding: 0 4px;
   font-size: 15px;
-  color: var(--secondary-color-3);
+  color: var(--primary-color-3);
   font-family: "Roboto Slab", serif;
 }
 
 .accordion-folder-sign {
-  background-image: url("/assets/documentIcon.svg");
-  background-size: cover;
+  -webkit-mask: url("/assets/documentIcon.svg");
+  background-color: var(--primary-color-3);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
   flex-shrink: 0;
   width: 24px;
   height: 18px;
@@ -50,8 +52,12 @@
 }
 
 .accordion-expand-sign {
-  content: url("/assets/arrowIcon.svg");
-  width: 8.5px;
+  -webkit-mask: url("/assets/arrowIcon.svg");
+  background-color: var(--primary-color-3);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  flex-shrink: 0;
+  width: 9px;
   height: 5.6px;
   transition: 0.5s;
 }
@@ -66,8 +72,10 @@
 }
 
 .accordion-delete-sign {
-  content: url("/assets/trashBinIcon.svg");
-  background-size: cover;
+  -webkit-mask: url("/assets/trashBinIcon.svg");
+  background-color: var(--primary-color-3);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
   margin-left: 3px;
   width: 18px;
   height: 18px;
@@ -132,11 +140,13 @@
 }
 
 .add-to-do-accordion-input::placeholder {
-  color: var(--secondary-color-2);
+  color: var(--primary-color-3);
+  opacity: 0.6;
 }
 
 .add-to-do-accordion-input:focus::placeholder {
   color: var(--primary-color-3);
+  opacity: 1;
 }
 
 .add-to-do-accordion-input-wrapper {
@@ -146,14 +156,14 @@
 
 .add-to-do-accordion-input-wrapper::after {
   content: "";
-  height: 0.5px;
-  background: var(--secondary-color-3);
+  height: 1px;
+  background: var(--primary-color-3);
   width: 0;
   display: block;
   transition: all 0.3s ease-in-out;
 }
 
-.add-to-do-accordion-input-wrapper:has(input:focus)::after {
+.active.add-to-do-accordion-input-wrapper::after {
   width: 300px;
 }
 
@@ -170,7 +180,7 @@
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.add-to-do-accordion-input-wrapper:has(:is(input:focus, input:not(:placeholder-shown))) + button {
+.add-to-do-accordion-input-wrapper.active + button {
   background: var(--primary-color-3);
   color: var(--primary-color-1);
 }

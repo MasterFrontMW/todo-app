@@ -1,66 +1,10 @@
-.theme-mode-container {
-  padding: 5px 24px;
+.theme-mode-button-wrapper {
+  padding: 10px 24px;
   display: flex;
   align-items: end;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-}
-
-.theme-mode-list {
-  border: 1px solid var(--primary-color-3);
-  border-radius: 4px;
-  padding: 2px;
-  display: none;
-  position: absolute;
-  top: 50px;
-  color: var(--primary-color-3);
-}
-
-.active {
-  display: block;
-}
-
-.light-mode {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin: 4px 0;
-  cursor: pointer;
-}
-
-.light-mode::before {
-  content: " ";
-  background-size: 100%;
-  background-color: var(--primary-color-3);
-  -webkit-mask-image: url("./assets/lightModeIcon.svg");
-  -webkit-mask-size: 100%;
-  mask-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-}
-
-.dark-mode {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin: 4px 0;
-  cursor: pointer;
-}
-
-.dark-mode::before {
-  content: " ";
-  background-size: 100%;
-  background-color: var(--primary-color-3);
-  -webkit-mask-image: url("./assets/darkModeIcon.svg");
-  -webkit-mask-size: 100%;
-  mask-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-}
-
-.theme-mode-button-wrapper {
-  margin-top: 10px;
 }
 
 .theme-mode-button {
