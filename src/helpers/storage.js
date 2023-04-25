@@ -57,17 +57,6 @@ export const updateTaskInStorage = (task) => {
   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedAllGroups);
 };
 
-export const updateGroupOfTasksInStorage = (tasksGroup) => {
-  const currentTasksGroups = getGroupOfTasksDataFromLocalStorage();
-  const updatedTasksGroups = currentTasksGroups.map((currentTaskGroup) => {
-    if (currentTaskGroup.id === tasksGroup.id) {
-      return tasksGroup;
-    }
-    return currentTaskGroup;
-  });
-  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedTasksGroups);
-};
-
 export const deleteTaskInStorage = (task) => {
   if (!task.groupId) {
     const lsitOfTasks = getListOfTasksWithoutGrupFromLocalStorage();
