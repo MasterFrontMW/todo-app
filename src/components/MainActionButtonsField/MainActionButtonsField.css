@@ -23,6 +23,7 @@
   border: none;
   background: transparent;
   outline: none;
+  color: var(--primary-color-3);
 }
 
 .action-buttons-input::placeholder {

@@ -1,18 +1,15 @@
 :root {
   /* colors */
   --primary-color-1: #f9f7f3;
-  --primary-color-2: #80a4ed;
+  --primary-color-2: #d1d6dc;
   --primary-color-3: #3d3b30;
   --primary-color-4: #d8e2dc;
-  --secondary-color-1: #a18276;
+  --secondary-color-1: #d51d1d;
   --secondary-color-2: #7c7c7c;
   --secondary-color-3: #0f0f0f;
   --shadow-color-1: #1c1421;
 
   /* container */
-  --todo-page-background: #e5e5e5;
-  --todo-app-background: #f4f4f4;
-  --todo-header-logo-color: #413f3f;
   --todo-header-logo-height: 15px;
 
   /* title */
@@ -50,12 +47,14 @@
 }
 
 .dark {
-  --primary-color-1: #514e4a;
-  --primary-color-4: #21232b;
-  --primary-color-3: #909391;
-  --secondary-color-3: #cac8c8;
-  --secondary-color-2: #0f0f0f;
-  --shadow-color-1: #1c1421;
+  --primary-color-1: #5b5854;
+  --primary-color-2: #807e80;
+  --primary-color-3: #cedad2;
+  --primary-color-4: #222530;
+  --secondary-color-1: #a41515;
+  --secondary-color-3: #d4cbcb;
+  --secondary-color-2: #343333;
+  --shadow-color-1: #8c8e91;
 }
 
 .light {

@@ -14,6 +14,7 @@
   display: none;
   position: absolute;
   top: 50px;
+  color: var(--primary-color-3);
 }
 
 .active {
@@ -25,12 +26,16 @@
   align-items: center;
   gap: 5px;
   margin: 4px 0;
+  cursor: pointer;
 }
 
 .light-mode::before {
   content: " ";
-  background-image: url("./assets/lightModeIcon.svg");
   background-size: 100%;
+  background-color: var(--primary-color-3);
+  -webkit-mask-image: url("./assets/lightModeIcon.svg");
+  -webkit-mask-size: 100%;
+  mask-repeat: no-repeat;
   width: 20px;
   height: 20px;
 }
@@ -40,12 +45,16 @@
   align-items: center;
   gap: 5px;
   margin: 4px 0;
+  cursor: pointer;
 }
 
 .dark-mode::before {
   content: " ";
-  background-image: url("./assets/darkModeIcon.svg");
   background-size: 100%;
+  background-color: var(--primary-color-3);
+  -webkit-mask-image: url("./assets/darkModeIcon.svg");
+  -webkit-mask-size: 100%;
+  mask-repeat: no-repeat;
   width: 20px;
   height: 20px;
 }
