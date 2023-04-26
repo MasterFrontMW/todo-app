@@ -13,28 +13,36 @@ export const getListOfTasksWithoutGrupFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem(STORAGE_TASK_KEY)) || [];
 };
 
-export const addTaskToStorage = (taskTitle) => {
-  const currentTasks = getListOfTasksWithoutGrupFromLocalStorage();
-  const newTasks = [...currentTasks, taskTitle];
-  saveDataInStorageForKey(STORAGE_TASK_KEY, newTasks);
+export const addTaskInStorage = (task) => {
+  if (!task.groupId) {
+    const lsitOfTasks = getListOfTasksWithoutGrupFromLocalStorage();
+    lsitOfTasks.push(task);
+    saveDataInStorageForKey(STORAGE_TASK_KEY, lsitOfTasks);
+    return;
+  }
+
+  const allGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
+  const currentGroup = allGroupOfTasks.find((group) => task.groupId === group.id);
+  currentGroup.tasks.push(task);
+  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, allGroupOfTasks);
 };
 
-export const deleteTaskStorage = (id) => {
-  const currentTasks = getListOfTasksWithoutGrupFromLocalStorage();
-  const indexOfDeletedTask = currentTasks.findIndex((task) => task.id === id);
-  const newTaskList = currentTasks.filter((task) => task !== currentTasks[indexOfDeletedTask]);
-  saveDataInStorageForKey(STORAGE_TASK_KEY, newTaskList);
+export const addGroupOfTaskInStorage = (tasksGroup) => {
+  const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
+  const newGroupOfTasks = [...currentGroupOfTasks, tasksGroup];
+  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, newGroupOfTasks);
 };
 
 export const updateTaskInStorage = (task) => {
-  const currentTasks = getListOfTasksWithoutGrupFromLocalStorage();
-  const updatedTasks = currentTasks.map((currentTask) =>
-    currentTask.id === task.id ? task : currentTask,
-  );
-  saveDataInStorageForKey(STORAGE_TASK_KEY, updatedTasks);
-};
+  if (!task.groupId) {
+    const currentTasks = getListOfTasksWithoutGrupFromLocalStorage();
+    const updatedTasks = currentTasks.map((currentTask) =>
+      currentTask.id === task.id ? task : currentTask,
+    );
+    saveDataInStorageForKey(STORAGE_TASK_KEY, updatedTasks);
+    return;
+  }
 
-export const updateTaskInGroupStorage = (task) => {
   const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
   const updatedAllGroups = currentGroupOfTasks.map((group) => {
     if (group.id === task.groupId) {
@@ -46,10 +54,10 @@ export const updateTaskInGroupStorage = (task) => {
     return group;
   });
 
-  saveDataInStorageForKey(STORAGE_TASK_KEY, updatedAllGroups);
+  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedAllGroups);
 };
 
-export const deleteTaskInGroupStorage = (task) => {
+export const deleteTaskInStorage = (task) => {
   if (!task.groupId) {
     const lsitOfTasks = getListOfTasksWithoutGrupFromLocalStorage();
     const newListOfTasks = lsitOfTasks.filter((taskItem) => taskItem.id !== task.id);
@@ -67,36 +75,6 @@ export const deleteTaskInGroupStorage = (task) => {
   );
 
   saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedGroupsOfTasks);
-};
-
-export const addGroupOfTaskInStorage = (tasksGroup) => {
-  const currentGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
-  const newGroupOfTasks = [...currentGroupOfTasks, tasksGroup];
-  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, newGroupOfTasks);
-};
-
-export const addTaskInGroupStorage = (task) => {
-  const allGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
-  const currentGroup = allGroupOfTasks.find((group) => task.groupId === group.id);
-  currentGroup.tasks.push(task);
-  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, allGroupOfTasks);
-};
-
-export const addTaskToStorageWithoutGroup = (task) => {
-  const lsitOfTasks = getListOfTasksWithoutGrupFromLocalStorage();
-  lsitOfTasks.push(task);
-  saveDataInStorageForKey(STORAGE_TASK_KEY, lsitOfTasks);
-};
-
-export const updateGroupOfTasksInStorage = (tasksGroup) => {
-  const currentTasksGroups = getGroupOfTasksDataFromLocalStorage();
-  const updatedTasksGroups = currentTasksGroups.map((currentTaskGroup) => {
-    if (currentTaskGroup.id === tasksGroup.id) {
-      return tasksGroup;
-    }
-    return currentTaskGroup;
-  });
-  saveDataInStorageForKey(STORAGE_GROUP_OF_TASKS_KEY, updatedTasksGroups);
 };
 
 export const deleteGroupOfTasksInStorage = (id) => {
