@@ -6,6 +6,7 @@ import { initializeThemeMode } from './components/ThemeMode/ThemeMode';
 import { Accordion } from './components/Accordion/Accordion';
 
 import {
+  getThemeModeFromLocalStorage,
   getGroupOfTasksDataFromLocalStorage,
   getListOfTasksWithoutGrupFromLocalStorage,
 } from './helpers/storage';
@@ -15,11 +16,12 @@ import { MainActionButtonsField } from './components/MainActionButtonsField/Main
 
 // selectors
 const pageTitle = document.querySelector('#title');
-const themeModeSection = document.querySelector('#theme-mode')
+const themeModeSection = document.querySelector('#theme-mode');
 const addToDoSection = document.querySelector('#todo-section');
 
 // load data from local storage and render tasks
 
+const isDarkThemeModeOnLoad = getThemeModeFromLocalStorage();
 const dataGroupOnLoad = getGroupOfTasksDataFromLocalStorage();
 const dataTasksWithoutGropOnLoad = getListOfTasksWithoutGrupFromLocalStorage();
 
@@ -32,7 +34,14 @@ const renderTasks = () => {
   dataTasksWithoutGropOnLoad.forEach((task) => addToDoSection.append(ToDoItem(task)));
 };
 
+const setTheme = () => {
+  if (isDarkThemeModeOnLoad) {
+    document.body.classList.add('dark');
+  }
+};
+
 const initializeFrontendApp = () => {
+  setTheme();
   renderGroups();
   renderTasks();
   pageTitle.innerHTML = Title();

@@ -1,4 +1,5 @@
 import './ThemeMode.css';
+import { updateDarkThemeModeInStorage } from '../../helpers/storage';
 
 const themeModeLight = () => {
   return `<svg class = "theme-mode-button" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
@@ -21,9 +22,11 @@ export const initializeThemeMode = () => {
     document.body.classList.toggle('dark');
     if (document.body.classList.contains('dark')) {
       themeModeButtonWrapper.innerHTML = themeModeLight();
+      updateDarkThemeModeInStorage(true);
       return;
     }
     themeModeButtonWrapper.innerHTML = themeModeDark();
+    updateDarkThemeModeInStorage(false);
   };
 
   themeModeButtonWrapper.addEventListener('click', handleClickThemeModeButton);

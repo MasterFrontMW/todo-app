@@ -1,8 +1,24 @@
 // eslint-disable-next-line import/prefer-default-export
-import { STORAGE_TASK_KEY, STORAGE_GROUP_OF_TASKS_KEY } from '../config/consts';
+import {
+  STORAGE_TASK_KEY,
+  STORAGE_GROUP_OF_TASKS_KEY,
+  DARK_STORAGE_THEME_MODE,
+} from '../config/consts';
 
 const saveDataInStorageForKey = (key, data) => {
   return localStorage.setItem(key, JSON.stringify(data));
+};
+
+export const getThemeModeFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem(DARK_STORAGE_THEME_MODE));
+};
+
+export const updateDarkThemeModeInStorage = (themeMode) => {
+  if (!themeMode) {
+    localStorage.removeItem(DARK_STORAGE_THEME_MODE);
+    return;
+  }
+  saveDataInStorageForKey(DARK_STORAGE_THEME_MODE, true);
 };
 
 export const getGroupOfTasksDataFromLocalStorage = () => {
