@@ -13,14 +13,15 @@ const themeModeDark = () => {
 </svg>`;
 };
 
-export const initializeThemeMode = () => {
+export const initializeThemeMode = (isDarkThemeModeOnLoad) => {
   const themeModeButtonWrapper = document.createElement('div');
   themeModeButtonWrapper.classList.add('theme-mode-button-wrapper');
-  themeModeButtonWrapper.innerHTML = themeModeDark();
+  themeModeButtonWrapper.innerHTML = isDarkThemeModeOnLoad ? themeModeLight() : themeModeDark();
 
   const handleClickThemeModeButton = () => {
-    document.body.classList.toggle('dark');
-    if (document.body.classList.contains('dark')) {
+    document.body.classList.toggle('theme-dark');
+    document.body.classList.toggle('theme-light');
+    if (document.body.classList.contains('theme-dark')) {
       themeModeButtonWrapper.innerHTML = themeModeLight();
       updateDarkThemeModeInStorage(true);
       return;

@@ -46,17 +46,13 @@
   --spacing-xxl: 40px;
 }
 
-.dark {
-  --primary-color-1: #5b5854;
+body.theme-dark {
+  --primary-color-1: #615f5d;
   --primary-color-2: #807e80;
   --primary-color-3: #cedad2;
   --primary-color-4: #222530;
   --secondary-color-1: #a41515;
   --secondary-color-3: #d4cbcb;
-  --secondary-color-2: #343333;
+  --secondary-color-2: #b6b6b6;
   --shadow-color-1: #8c8e91;
-}
-
-.light {
-  --todo-page-background: #f4f4f4;
 }
