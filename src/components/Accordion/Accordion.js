@@ -1,7 +1,7 @@
 import './Accordion.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
 import {
-  addTaskInGroupStorage,
+  addTaskInStorage,
   getGroupOfTasksDataFromLocalStorage,
   deleteGroupOfTasksInStorage,
 } from '../../helpers/storage';
@@ -90,7 +90,7 @@ export const Accordion = ({ id, taskGroupTitle, tasks }) => {
     }
     const taskToStorage = createTaskStorage(addToDoAccordionFieldInput.value);
     accordionItemContent.prepend(ToDoItem(taskToStorage));
-    addTaskInGroupStorage(taskToStorage);
+    addTaskInStorage(taskToStorage);
     const actualGroupOfTasks = getGroupOfTasksDataFromLocalStorage();
     const actualTasksQuantity = actualGroupOfTasks.find((group) => group.id === id).tasks.length;
     accordionTaskCounter.innerText = actualTasksQuantity;

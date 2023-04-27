@@ -1,6 +1,6 @@
 import './MainActionButtonsField.css';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
-import { addGroupOfTaskInStorage, addTaskToStorageWithoutGroup } from '../../helpers/storage';
+import { addGroupOfTaskInStorage, addTaskInStorage } from '../../helpers/storage';
 import { Accordion } from '../Accordion/Accordion';
 import { createTasksGroupDTO, createTasksItemDTO } from '../../helpers/dataObjects';
 
@@ -15,7 +15,7 @@ const createGroup = (name) => {
 
 const createTask = (name) => {
   const newTask = createTasksItemDTO(name);
-  addTaskToStorageWithoutGroup(newTask);
+  addTaskInStorage(newTask);
 
   const toDoItem = ToDoItem(newTask);
   const actionButtonsNode = toDoSection.querySelector('#action-buttons-container');
