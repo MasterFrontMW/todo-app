@@ -137,6 +137,7 @@
   border: none;
   background: transparent;
   outline: none;
+  color: var(--primary-color-3);
 }
 
 .add-to-do-accordion-input::placeholder {

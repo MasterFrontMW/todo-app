@@ -26,7 +26,6 @@ const dataGroupOnLoad = getGroupOfTasksDataFromLocalStorage();
 const dataTasksWithoutGropOnLoad = getListOfTasksWithoutGrupFromLocalStorage();
 const isDarkThemeModeOnLoad = getThemeModeFromLocalStorage();
 
-console.log({ dataGroupOnLoad, dataTasksWithoutGropOnLoad });
 const renderGroups = () => {
   dataGroupOnLoad.forEach((group) => addToDoSection.prepend(Accordion(group)));
 };
@@ -38,13 +37,9 @@ const renderTasks = () => {
 const setTheme = () =>
   document.body.classList.add(`${isDarkThemeModeOnLoad ? 'theme-dark' : 'theme-light'}`);
 
-const accordions = document.querySelector('.accordion-navbar-container');
-console.log('accordions before initialisation', accordions);
 const initializeFrontendApp = () => {
   setTheme();
   renderGroups();
-  const accordions = document.querySelector('.accordion-navbar-container');
-  console.log('accordions INSIDE initialisation AFTER render grups', accordions);
   renderTasks();
   pageTitle.innerHTML = Title();
   themeModeSection.append(initializeThemeMode(isDarkThemeModeOnLoad));
