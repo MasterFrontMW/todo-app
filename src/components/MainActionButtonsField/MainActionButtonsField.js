@@ -51,9 +51,14 @@ export const MainActionButtonsField = () => {
   addGroupButton.innerHTML = 'Add Group';
 
   const getButtons = () => mainActionButtonsFieldContainer.querySelectorAll('button');
-  const activateButtons = () => getButtons().forEach((button) => button.classList.add('active'));
-  const resetActiveButtons = () =>
+  const activateButtons = () => {
+    getButtons().forEach((button) => button.classList.add('active'));
+    inputWrapper.classList.add('active');
+  };
+  const resetActiveButtons = () => {
     getButtons().forEach((button) => button.classList.remove('active'));
+    inputWrapper.classList.remove('active');
+  };
 
   const handleAddToDoButtonActiveClick = (e) => {
     input.focus();

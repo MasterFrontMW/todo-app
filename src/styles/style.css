@@ -11,44 +11,43 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: var(--todo-page-background);
+  background: var(--primary-color-4);
   font-family: Montserrat, sans-serif;
+}
+
+#theme-mode {
+  position: sticky;
+  top: 0;
+  right: 0;
 }
 
 .app-container {
   position: relative;
   width: 600px;
   min-height: 50vh;
-  background: var(--todo-app-background);
-  margin: 20rem auto;
-  box-shadow: var(--todo-app-shadow);
+  background: var(--primary-color-1);
+  margin: 10rem auto;
+  box-shadow: var(--shadow-color-1);
+  border-radius: 25px;
 }
 
 .app-container::before {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  margin-left: 30px;
+  margin-top: auto;
+  width: 540px;
   content: "";
-  background: var(--todo-header-logo-color);
+  background: var(--primary-color-3);
   height: 50px;
-  clip-path: ellipse(62% 25% at 50% 1%);
-}
-
-#accordion {
-  display: inline-block;
-  width: 100%;
-  margin-top: var(--todo-header-logo-height);
-  min-height: var(--accordion-min-height);
-  padding: 0 30px;
-  border: 1px solid black;
+  clip-path: ellipse(42% 25% at 50% 1%);
 }
 
 #todo-section {
   width: 100%;
   min-height: 50px;
   padding: var(--spacing-xl) var(--spacing-l) var(--spacing-l);
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-l);

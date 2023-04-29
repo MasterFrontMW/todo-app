@@ -7,11 +7,14 @@
 
 .close-button {
   margin-right: 5px;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   margin-left: 10px;
-  opacity: 0.4;
-  background: url("/assets/closeIcon.svg") center;
+  opacity: 0.6;
+  -webkit-mask: url("/assets/closeIcon.svg");
+  background-color: var(--primary-color-3);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
 }
 
 .close-button:hover {
@@ -44,19 +47,20 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
   border-radius: 6px;
-  border: 2px solid var(--color-light-grey);
+  border: 2px solid var(--secondary-color-2);
   z-index: 1;
 }
 
 .checkmark:hover {
-  border: 2px solid #d51e1e;
+  border: 2px solid var(--secondary-color-1);
   cursor: pointer;
 }
 
 .task-message {
   animation: intro-load 0.8s forwards;
-  padding: 0.5px 1px;
+  padding: 1px 2px;
   margin-left: 10px;
+  color: var(--primary-color-3);
 }
 
 .task-message:hover {
@@ -64,11 +68,11 @@ input[type="checkbox"] {
 }
 
 .task-message:focus {
-  background: var(--color-light-grey);
+  background: var(--primary-color-1);
 }
 
 input[type="checkbox"]:checked + .checkmark {
-  background: var(--color-light-grey);
+  background: var(--primary-color-2);
   background-image: url("/assets/checkIcon.svg");
   background-size: cover;
 }
@@ -88,18 +92,18 @@ input[type="checkbox"]:checked:hover ~ .task-message {
 }
 
 .grey-border:hover {
-  border: 2px solid #8f8d8d;
+  border: 2px solid var(--primary-color-3);
 }
 
-/* ------------------------- */
 .edit-button {
   width: 18px;
   height: 18px;
   margin-left: auto;
-  background-image: url("/assets/editIcon.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  opacity: 0.4;
+  -webkit-mask: url("/assets/editIcon.svg");
+  background-color: var(--primary-color-3);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  opacity: 0.6;
 }
 
 .edit-button:hover {
